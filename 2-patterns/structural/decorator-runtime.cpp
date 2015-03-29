@@ -59,3 +59,6 @@ int main()
 // [40-41], and pass it to the `bar` function on [43], which takes a
 // reference to any `foo` object and calls `do_work` on it. In this
 // case, the call will be decorated by `foo_decorator`.
+// 
+// This pattern can also be implemented with
+// [compile-time polymorphism](/patterns/structural/decorator-compiletime.html).

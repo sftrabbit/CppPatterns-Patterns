@@ -57,3 +57,6 @@ int main()
 // [36-37], and pass it to the `bar` function template on [39], which
 // expects any object that implements the `do_work` function. In this
 // case, the call to `do_work` on [31] will be decorated.
+// 
+// This pattern can also be implemented with
+// [run-time polymorphism](/patterns/structural/decorator-runtime.html).

@@ -8,7 +8,7 @@ class foo
 		class builder;
 
 		foo(int prop1, bool prop2, bool prop3, std::vector<int> prop4)
-			: prop1(prop1), prop2(prop2), prop3(prop3), prop4(prop4)
+			: prop1{prop1}, prop2{prop2}, prop3{prop3}, prop4{prop4}
 		{ }
 
 		int prop1;
@@ -44,9 +44,13 @@ int main()
 	                      .build();
 }
 
-// Construct complex objects with the builder pattern.
+// Separate the complex construction of an object from its
+// representation, simplifying the construction process.
 // 
-// The `foo::builder` class, on [20-38], provides an interface for
+// The `foo` class, on [5-18], has a complex construction process
+// during which any subset of its properties might be set. This
+// process is captured by the `foo::builder` class, on [20-38].
+// This builder class provides an interface for
 // constructing `foo` objects, allowing various combinations of
 // parameters to be provided. This avoids having to define a large
 // collection of constructors for `foo`.

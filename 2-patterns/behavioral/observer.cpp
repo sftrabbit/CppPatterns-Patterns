@@ -35,6 +35,20 @@ class subject
 		std::vector<std::reference_wrapper<observer>> observers;
 };
 
+// Notify generic observer objects when an event occurs.
+// 
+// The observer pattern allows generic observer objects to be
+// registered with a subject object and receive notifications
+// when certain events occur.
+// 
+// The `subject` class, defined on [19-36], contains a
+// [`std::vector`](cpp/container/vector) of references to observers.
+// Observers (also known as listeners), in this case, are objects that
+// implement the `observer` interface ([6-10]). The
+// `register_observer` function ([22-25]) adds observers
+// to this `std::vector`, which are later to be notified by the
+// `notify_observers` function ([27-32]).
+
 int main()
 {
 	subject s;
@@ -45,18 +59,3 @@ int main()
 
 	s.notify_observers();
 }
-
-// Notify observer objects when an event occurs.
-// 
-// The `subject` class, defined on [19-36], contains a
-// [`std::vector`](cpp/container/vector) of references to observers.
-// Observers (also known as listeners), in this case, are objects that
-// implement the `observer` interface ([6-10]). The
-// `register_observer` function ([22-25]) adds observers
-// to this `std::vector`, which are later to be notified by the
-// `notify_observers` function ([27-32]).
-// 
-// To demonstrate, we create two `observer_concrete` objects, which
-// implement the `observer` interface, and register them with the same
-// `subject` ([40-44]). We later call `notify_observers` on [46], which
-// calls the `notify` function on each of the observers.

@@ -1,4 +1,4 @@
-// Read a line of values into a container
+// Read a line of values
 
 #include <vector>
 #include <sstream>

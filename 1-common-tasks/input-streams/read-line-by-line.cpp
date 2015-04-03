@@ -1,4 +1,4 @@
-// Read lines from a stream
+// Read line-by-line
 
 #include <sstream>
 #include <string>

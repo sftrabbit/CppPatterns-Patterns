@@ -18,7 +18,8 @@ int main()
 	}
 }
 
-// Validate reading multiple values from an input stream.
+// Ensure that multiple stream reads are successful before using the
+// extracted values.
 // 
 // We create a [`std::istringstream`](cpp/io/basic_istringstream) as
 // the example input stream, which contains some values that we wish

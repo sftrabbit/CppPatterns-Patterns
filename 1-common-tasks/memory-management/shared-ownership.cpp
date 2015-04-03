@@ -1,4 +1,4 @@
-// Share ownership of an object
+// Shared ownership
 
 #include <memory>
 #include <utility>

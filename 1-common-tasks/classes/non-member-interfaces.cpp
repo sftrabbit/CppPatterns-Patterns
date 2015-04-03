@@ -1,4 +1,4 @@
-// Define class interfaces with non-member functions 
+// Non-member non-friend interfaces 
 
 namespace ns
 {
@@ -26,14 +26,16 @@ int main()
 	non_member(obj);
 }
 
-// Improve encapsulation with non-member non-friend functions.
+// Reduce dependencies on internal class details and improve
+// encapsulation.
 // 
-// On [17-20], we define a function, `non_member`, which is logically
-// part of the interface of `foo`. However, as this function can
-// simply be implemented in terms of the member function, `member`, 
-// we define it as a non-member function.
+// The `foo` class, defined on [5-15], has a single member function,
+// `member` ([8-11]), that requires access to `foo`'s private data.
 // 
-// This approach [improves encapsulation](http://www.drdobbs.com/cpp/how-non-member-functions-improve-encapsu/184401197)
+// The function `non_member` on [17-20] is also logically part of
+// `foo`'s interface, yet has been defined as a non-member because it
+// can be implemented in terms of `member`. This approach
+// [improves encapsulation](http://www.drdobbs.com/cpp/how-non-member-functions-improve-encapsu/184401197)
 // by reducing the number of functions that are dependent on the
 // private members of a class.
 // 

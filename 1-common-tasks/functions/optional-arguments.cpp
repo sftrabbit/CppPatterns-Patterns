@@ -1,4 +1,4 @@
-// Take optional arguments
+// Optional arguments
 
 #include <experimental/optional>
 
@@ -24,12 +24,11 @@ int main()
 // have type
 // [`std::experimental::optional`](cpp/experimental/optional) (from
 // the Library Fundamentals TS). This allows the value of those
-// arguments to be omitted in any combination, as shown on [16-18].
+// arguments to be omitted, as shown on [16-18].
 // 
 // A related technique is the use of default arguments, which allow
-// arguments to be omitted entirely. In fact, using default arguments
-// of `nullopt` for `f` and `b` would allow them to be omitted when
-// calling the function.
+// arguments to be omitted entirely, but only from the end of the
+// argument list.
 // 
 // If you are constructing an object with a complex combinatorial set
 // of optional arguments, consider using the

@@ -1,4 +1,4 @@
-// Passing arrays
+// Pass arrays
 
 #include <array>
 #include <experimental/dynarray>

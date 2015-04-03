@@ -13,7 +13,7 @@ int main()
 	          << '\n';
 }
 
-// Write data to a stream in aligned columns.
+// Align data in columns when writing to an output stream.
 // 
 // On [8-13], we write two lines of data to an output stream.
 // [`std::cout`](cpp/io/cout) is used as the example stream.

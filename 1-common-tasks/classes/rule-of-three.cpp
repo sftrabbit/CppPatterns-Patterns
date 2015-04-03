@@ -28,8 +28,8 @@ class foo
 		int* p;
 };
 
-// Encapsulate and safely manage dynamically allocated resources to
-// avoid memory leaks.
+// Implement RAII to encapsulate and safely manage dynamically
+// allocated resources.
 // 
 // The class `foo` dynamically allocates an `int` object in its
 // constructor ([9]). To ensure that the lifetime of this `int` is

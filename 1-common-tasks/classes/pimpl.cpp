@@ -35,8 +35,8 @@ foo::foo()
 	pimpl->do_internal_work();
 }
 
-// Reduce dependencies on internal class implementations and improve
-// compile times.
+// Remove compilation dependencies on internal class implementations
+// and improve compile times.
 // 
 // When a header file changes, any files that `#include` that file
 // will need to be recompiled. In the case of a class header, this

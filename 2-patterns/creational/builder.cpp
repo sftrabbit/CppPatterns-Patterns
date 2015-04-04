@@ -45,7 +45,7 @@ int main()
 }
 
 // Separate the complex construction of an object from its
-// representation, simplifying the construction process.
+// representation.
 // 
 // The `foo` class, on [5-18], has a complex construction process
 // during which any subset of its properties might be set. This
@@ -55,7 +55,7 @@ int main()
 // parameters to be provided. This avoids having to define a large
 // collection of constructors for `foo`.
 // 
-// The `foo::builder` class, known as a builder, implements a set of
+// The `foo::builder` class implements a set of
 // chainable functions for setting the construction parameters
 // ([23-26]) and a `build` member function for constructing the `foo`
 // object with these parameters ([28-31]).

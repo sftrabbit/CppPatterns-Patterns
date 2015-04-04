@@ -1,4 +1,4 @@
-// Decorator (run-time)
+// Decorator
 
 class foo
 {
@@ -43,22 +43,18 @@ int main()
 	bar(decorated_f);
 }
 
-// Wrap a class with a decorator to extend its functionality.
+// Extend the functionality of a class.
 // 
 // On [9-14], we define the class that we wish to decorate,
 // `foo_concrete`, which implements the `foo` interface.
 // 
 // The `foo_decorator` class, on [16-31], also implements the
 // `foo` interface. This decorator class wraps any other `foo`
-// object, which is passed to the constructor by reference[19-21]
-// and decorates its member functions. That is, the
-// `foo_decorator::do_work` function ([23-27]) simply calls the
-// wrapped object's `do_work` function, while doing some extra work.
+// object, and forwarding any calls to the wrapped object. By adding
+// additional code to `foo_decorator::do_work` ([23-27]), we can
+// extend the functionality of the wrapped object.
 // 
 // To demonstrate, we wrap a `foo_concrete` with a `foo_decorator` on
 // [40-41], and pass it to the `bar` function on [43], which takes a
 // reference to any `foo` object and calls `do_work` on it. In this
 // case, the call will be decorated by `foo_decorator`.
-// 
-// This pattern can also be implemented with
-// [compile-time polymorphism](/patterns/structural/decorator-compiletime.html).

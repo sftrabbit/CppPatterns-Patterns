@@ -27,4 +27,4 @@ int main()
 // `std::unique_ptr` to be moved into the function.
 // 
 // In other cases, you may instead wish to
-// [share ownership of an object](/common-tasks/memory-management/share-ownership-of-object.html).
+// [share ownership of an object](/common-tasks/shared-ownership.html).

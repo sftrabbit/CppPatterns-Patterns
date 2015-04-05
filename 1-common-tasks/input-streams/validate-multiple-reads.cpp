@@ -35,5 +35,5 @@ int main()
 // extractions were successful.
 // 
 // If you are reading values on multiple lines, consider [reading
-// from the stream line-by-line](/common-tasks/input-streams/read-lines-from-stream.html)
+// from the stream line-by-line](/common-tasks/read-line-by-line.html)
 // and then parsing each line.

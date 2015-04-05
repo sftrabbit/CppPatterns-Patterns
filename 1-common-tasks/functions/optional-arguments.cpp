@@ -32,4 +32,4 @@ int main()
 // 
 // If you are constructing an object with a complex combinatorial set
 // of optional arguments, consider using the
-// [builder pattern](/patterns/creational/builder.html).
+// [builder pattern](/patterns/builder.html).

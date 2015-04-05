@@ -27,4 +27,4 @@ int main()
 // destroyed.
 // 
 // In other cases, you may instead wish to [transfer unique ownership
-// of an object](/common-tasks/memory-management/transfer-ownership-of-object.html).
+// of an object](/common-tasks/unique-ownership.html).

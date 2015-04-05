@@ -5,13 +5,13 @@
 
 struct foo {};
 
-void pass_unique_ownership(std::unique_ptr<foo> obj)
+void func(std::unique_ptr<foo> obj)
 { }
 
 int main()
 {
 	std::unique_ptr<foo> obj = std::make_unique<foo>();
-	pass_unique_ownership(std::move(obj));
+	func(std::move(obj));
 }
 
 // Transfer unique ownership of a dynamically allocated object to

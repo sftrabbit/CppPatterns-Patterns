@@ -32,6 +32,6 @@ std::ostream& operator<<(std::ostream& stream,
 
 int main()
 {
-	foo f(10);
+	foo f;
 	std::cout << f << std::endl;
 }

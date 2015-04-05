@@ -11,7 +11,7 @@ void func(std::shared_ptr<foo> obj)
 int main()
 {
 	std::shared_ptr<foo> obj = std::make_shared<foo>();
-	pass_shared_ownership(obj);
+	func(obj);
 }
 
 // Share ownership of a dynamically allocated object with another

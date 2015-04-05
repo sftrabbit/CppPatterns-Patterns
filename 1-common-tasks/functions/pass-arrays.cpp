@@ -31,11 +31,12 @@ int main()
 // We define the function `compile_time`, on [6-7], to have a
 // parameter of type [`std::array`](cpp/container/array), which represents
 // *compile-time* fixed-size arrays. This means that the size must be
-// known at compile time. [!14-16] demonstrate passing arrays of size
-// 3 to this function.
+// known at compile time. A template may be used to instantiate
+// functions for different `std::array` sizes. [!14-16] demonstrate
+// passing arrays of size 3 to this function.
 // 
 // On [9-10], we define function `run_time` to have a parameter of type
 // [`std::experimental::dynarray`](cpp/container/dynarray), which
-// represents *run-time* fixed-size arrays. This type can be created
+// represents *run-time* fixed-size arrays. This type can be created with
 // any size at run time, but cannot change size once created. [!18-20]
 // demonstrate passing arrays of various sizes to this function.

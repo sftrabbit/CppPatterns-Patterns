@@ -18,6 +18,9 @@ To contribute new samples or edit existing ones, please fork this
 repository and submit pull requests for your changes. Please read
 the following guidelines before contributing.
 
+For sample ideas, please see the [issues page](issues) for
+suggestions.
+
 ## Guidelines
 
 ### File names

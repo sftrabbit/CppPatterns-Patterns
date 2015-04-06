@@ -1,6 +1,7 @@
 # C++ Samples - Samples
 
-C++ Samples is a repository of code samples illustrating a modern
+[C++ Samples](http://cppsamples.com/) is a repository of code samples
+illustrating a modern
 and idiomatic approach to writing C++. The aim is to provide
 beginner to intermediate C++ developers a reference for solving common
 problems in C++. As the C++ language and library evolve, which they

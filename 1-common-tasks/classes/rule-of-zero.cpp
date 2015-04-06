@@ -2,47 +2,46 @@
 
 #include <memory>
 
-class shallow
+class foo
 {
 	private:
+		int x = 10;
 		std::shared_ptr<int> p = std::make_shared<int>(5);
 };
 
-class deep
+class bar
 {
 	public:
-		deep() = default;
-
-		deep(deep const& other)
-			: p{std::make_unique<int>(*other.p)}
-		{ }
-
-	private:
 		std::unique_ptr<int> p = std::make_unique<int>(5);
 };
 
-// Use existing RAII types to encapsulate and safely manage
-// dynamically allocated resources.
+// Utilise the value semantics of existing types to avoid having to
+// implement custom copy and move operations.
 // 
-// The class `shallow` ([5-9]) manages a dynamically allocated `int`
-// object. Rather than manage this object manually, we use a
-// [`std::shared_ptr`](cpp/memory/shared_ptr) on [15] to take
-// ownership of the object. The lifetime of this object is now
-// tied to the lifetime of the `foo` object that contains it
-// without having to implement any constructors or destructors. If
-// a `shallow` object is copied, the copy will share ownership of
-// this resource.
+// The *rule of zero* states that we can avoid writing any custom
+// copy/move constructors, assignment operators, or destructors by
+// using existing types that support the appropriate copy/move
+// semantics.
 // 
-// If we want to perform a deep copy, we can instead use a
-// [`std::unique_ptr`](cpp/memory/unique_ptr) and implement a
-// copy constructor to copy the resource, as shown with the `deep`
-// class on [11-22].
+// The class `foo` on [5-10], for example, does not perform any
+// manual memory management, yet correctly supports copies and
+// moves without any memory leaks. The defaulted copy/move
+// constructors and assignment operators will simply copy or move
+// each member. For the member `x` ([9]), this will copy the value.
+// For `p`, which is a [`std::shared_ptr`](cpp/memory/shared_ptr),
+// the resource will be shared between copies.
+// 
+// The class `bar` on [12-16] is not copyable by default because it
+// has a [`std::unique_ptr`](cpp/memory/unique_ptr) member which
+// itself is not copyable. However, it correctly supports move
+// operations, which will transfer ownership of the dynamically
+// allocated resource.
 
 int main()
 {
-	shallow s1;
-	shallow s2 = s1;
+	foo f1;
+	foo f2 = f1;
 
-	deep d1;
-	deep d2 = d1;
+	bar b1;
+	bar b2 = std::move(b2);
 }

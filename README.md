@@ -19,9 +19,12 @@ To contribute new samples or edit existing ones, please fork this
 repository and submit pull requests for your changes. Please read
 the following guidelines before contributing.
 
+### TODO list
+
 For sample ideas, please see the
 [issues page](https://github.com/sftrabbit/CppSamples-Samples/issues)
-for suggestions.
+for suggestions. If you don't feel like writing samples yourself,
+feel free to add suggestions to this page.
 
 ## Guidelines
 

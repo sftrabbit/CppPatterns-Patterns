@@ -28,6 +28,7 @@ int main()
 // [`std::experimental::nullopt`](cpp/experimental/optional/nullopt)
 // represents no value.
 // 
+// This approach is more expressive than using pointers and `nullptr`.
 // A related technique is the use of default arguments, which allow
 // arguments to be omitted entirely, but only from the end of the
 // argument list.

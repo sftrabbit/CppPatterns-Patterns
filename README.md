@@ -25,6 +25,15 @@ for suggestions.
 
 ## Guidelines
 
+### What makes a good sample?
+
+A good sample:
+
+- uses only modern C++ language and standard library features.
+- is generic and therefore widely applicable.
+- is understandable for C++ beginners.
+- acts as a starting point for learning about C++ features.
+
 ### File names
 
 Each sample is a `.cpp` file that exists within a category and a

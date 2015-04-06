@@ -45,8 +45,10 @@ class foo
 // almost certainly needs these functions too. This idea is known
 // as the *rule of three*.
 // 
-// We can typically avoid manual memory management entirely by using
-// existing RAII types.
+// Note that we can typically avoid manual memory management and
+// having to write the copy constructor, assignment operator, and
+// destructor entirely by using the
+// [rule of zero](/common-tasks/rule-of-zero.html)
 
 int main()
 {

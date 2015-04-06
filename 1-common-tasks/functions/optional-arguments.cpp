@@ -24,7 +24,9 @@ int main()
 // have type
 // [`std::experimental::optional`](cpp/experimental/optional) (from
 // the Library Fundamentals TS). This allows the value of those
-// arguments to be omitted, as shown on [16-18].
+// arguments to be omitted, as shown on [16-18], where
+// [`std::experimental::nullopt`](cpp/experimental/optional/nullopt)
+// represents no value.
 // 
 // A related technique is the use of default arguments, which allow
 // arguments to be omitted entirely, but only from the end of the

@@ -4,7 +4,7 @@
 
 std::tuple<int, bool, float> foo()
 {
-	return {128, true, 1.5f};
+	return std::make_tuple(128, true, 1.5f);
 }
 
 int main()
@@ -20,7 +20,9 @@ int main()
 // 
 // The `foo` function on [5-8] returns a
 // [`std::tuple`](cpp/utility/tuple) representing multiple values
-// of different types.
+// of different types. We make use of the
+// [`std::make_tuple`](cpp/utility/tuple/make_tuple) utility function
+// to create the `std::tuple` object.
 // 
 // On [16], we call this function and use [`std::tie`](cpp/utility/tuple/tie)
 // to assign the return values to each of the given objects.

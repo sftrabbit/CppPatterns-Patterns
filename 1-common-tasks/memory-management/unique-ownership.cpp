@@ -22,9 +22,13 @@ int main()
 // (created with the [`std::make_unique`](cpp/memory/unique_ptr/make_unique)
 // utility function). [!14] then demonstrates passing ownership of this
 // object to the function `func`. After passing ownership, `main` no
-// longer has access to the `foo` object. The call to
-// [`std::move`](cpp/utility/move) is required to allow the
-// `std::unique_ptr` to be moved into the function.
+// longer has access to the `foo` object.
+// 
+// As `std::unique_ptr` is non-copyable, it must be moved instead of
+// being copied. The call to [`std::move`](cpp/utility/move) on [14]
+// allows `obj` to be treated like a temporary object (the expression
+// `std::move(obj)` is an rvalue) so that it can be moved into the
+// function.
 // 
 // In other cases, you may instead wish to
 // [share ownership of an object](/common-tasks/shared-ownership.html).

@@ -1,12 +1,13 @@
 // The rule of zero
 
 #include <memory>
+#include <vector>
 
 class foo
 {
 	private:
 		int x = 10;
-		std::shared_ptr<int> p = std::make_shared<int>(5);
+		std::vector<int> v = {1, 2, 3, 4, 5};
 };
 
 class bar
@@ -27,9 +28,9 @@ class bar
 // manual memory management, yet correctly supports copies and
 // moves without any memory leaks. The defaulted copy/move
 // constructors and assignment operators will simply copy or move
-// each member. For the member `x` ([9]), this will copy the value.
-// For `p`, which is a [`std::shared_ptr`](cpp/memory/shared_ptr),
-// the resource will be shared between copies.
+// each member. For the `int` `x` ([9]), this will copy its value.
+// For `v`, which is a [`std::vector`](cpp/container/vector),
+// all of its elements will be copied over.
 // 
 // The class `bar` on [12-16] is not copyable by default because it
 // has a [`std::unique_ptr`](cpp/memory/unique_ptr) member which

@@ -21,7 +21,7 @@ class foo_decorator : public foo
 		{ }
 
 		virtual void do_work() override
-    {
+		{
 			// Do something else here to decorate
 			// the do_work function
 			f.do_work();

@@ -7,7 +7,17 @@
 class foo
 {
 	public:
+		// Constructor and destructor need to be out-of-line because of std::unique_ptr
 		foo();
+		~foo();
+
+		// Copy are implicitly disabled, you need to declare them yourself.
+		// foo(const foo &);
+		// foo &operator=(const foo &);
+
+		// Move is implicitely disabled, you need to re-enable them explicitly.
+		foo(foo &&);
+		foo &operator=(foo &&);
 
 	private:
 		class impl;
@@ -35,6 +45,11 @@ foo::foo()
 	pimpl->do_internal_work();
 }
 
+foo::~foo() = default;
+foo::foo(foo &&) = default;
+foo &foo::operator=(foo &&) = default;
+
+
 // Remove compilation dependencies on internal class implementations
 // and improve compile times.
 // 
@@ -60,4 +75,5 @@ foo::foo()
 int main()
 {
 	foo f;
+	foo h = std::move(f); // call move constructor to build h
 }

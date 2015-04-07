@@ -25,7 +25,7 @@ class foo::builder
 		builder& set_prop3(bool value) { prop3 = value; return *this; };
 		builder& set_prop4(std::vector<int> value) { prop4 = value; return *this; };
 
-		foo build() const
+		operator foo() const
 		{
 			return foo{prop1, prop2, prop3, prop4};
 		}
@@ -40,8 +40,7 @@ class foo::builder
 int main()
 {
 	foo f = foo::builder{}.set_prop1(5)
-	                      .set_prop3(true)
-	                      .build();
+	                      .set_prop3(true);
 }
 
 // Separate the complex construction of an object from its
@@ -57,8 +56,8 @@ int main()
 // 
 // The `foo::builder` class implements a set of
 // chainable functions for setting the construction parameters
-// ([23-26]) and a `build` member function for constructing the `foo`
-// object with these parameters ([28-31]).
+// ([23-26]) and an `operator foo` operator overload ([28-31])
+// to convert `foo::builder` to a `foo` object, using the saved parameters.
 // 
 // On [42-44], we use `foo::builder` to construct a `foo` object,
 // setting its `prop1` and `prop3` members and calling `build` to

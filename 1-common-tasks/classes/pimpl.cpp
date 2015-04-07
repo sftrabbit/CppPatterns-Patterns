@@ -8,6 +8,7 @@ class foo
 {
 	public:
 		foo();
+		~foo();
 
 	private:
 		class impl;
@@ -34,6 +35,8 @@ foo::foo()
 {
 	pimpl->do_internal_work();
 }
+
+foo::~foo() = default;
 
 // Remove compilation dependencies on internal class implementations
 // and improve compile times.

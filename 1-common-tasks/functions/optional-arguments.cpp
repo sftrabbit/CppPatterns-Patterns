@@ -20,6 +20,10 @@ int main()
 
 // Allow argument values to be omitted when calling a function.
 // 
+// **Note**: This sample uses experimental entities from the Library
+// Fundamentals TS that demonstrate likely upcoming features in C++
+// but should not be used in production code.
+// 
 // The function `foo`, on [8-11], takes three arguments, two of which
 // have type
 // [`std::experimental::optional`](cpp/experimental/optional) (from

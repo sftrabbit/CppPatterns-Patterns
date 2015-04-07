@@ -29,6 +29,11 @@ void bubble_sort(ForwardRange& range)
 
 // Sort a generic range of elements using the bubble sort algorithm.
 // 
+// **Note**: The C++ standard library provides a generic
+// [`std::sort`](cpp/algorithm/sort) algorithm. This sample is a
+// reference implementation for the bubble sort algorithm and should
+// not be used in production code.
+// 
 // We define `bubble_sort` as a template, whose template parameter
 // `ForwardRange` must be a range that provides forward iterators.
 // The type alias `iterator` on [9] denotes the iterator type for

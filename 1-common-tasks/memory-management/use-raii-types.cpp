@@ -29,5 +29,5 @@ int main()
 // 
 // Likewise, it is good practice to ensure your own classes also
 // implement the RAII idiom with the
-// [rule of three](/common-tasks/rule-of-three.html)
+// [rule of five](/common-tasks/rule-of-five.html)
 // or [rule of zero](/common-tasks/rule-of-zero.html).

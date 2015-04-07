@@ -26,8 +26,8 @@ int main()
 // Fundamentals TS that demonstrate likely upcoming features in C++
 // but should not be used in production code.
 // 
-// C++ arrays are not copyable, so cannot be passed to and from
-// functions by value. The traditional approach is to pass both a
+// Built-in array types are not copyable, so cannot be passed to and
+// from functions by value. The traditional approach is to pass both a
 // pointer to an array's first element and the size of the array.
 // However, C++ provides class types that represent copyable
 // fixed-size arrays.

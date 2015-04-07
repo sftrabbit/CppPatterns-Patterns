@@ -1,3 +1,4 @@
+// Borrowed the idea from http://www.bogotobogo.com/Algorithms/mergesort.php and done some changes
 #include <iostream>
 #include <vector>
 #include <algorithm>

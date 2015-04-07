@@ -12,7 +12,7 @@ class observer
 class observer_concrete : public observer
 {
 	public:
-		virtual void notify()
+		virtual void notify() override
 		{ }
 };
 

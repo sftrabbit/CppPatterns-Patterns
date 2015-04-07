@@ -9,7 +9,7 @@ class foo
 class foo_concrete : public foo
 {
 	public:
-		virtual void do_work()
+		virtual void do_work() override
 		{ }
 };
 
@@ -20,7 +20,8 @@ class foo_decorator : public foo
 			: f(f)
 		{ }
 
-		virtual void do_work() {
+		virtual void do_work() override
+    {
 			// Do something else here to decorate
 			// the do_work function
 			f.do_work();

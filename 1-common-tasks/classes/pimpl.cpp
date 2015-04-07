@@ -10,6 +10,9 @@ class foo
 		foo();
 		~foo();
 
+		foo(foo&&);
+		foo& operator=(foo&&);
+
 	private:
 		class impl;
 		std::unique_ptr<impl> pimpl;
@@ -38,6 +41,9 @@ foo::foo()
 
 foo::~foo() = default;
 
+foo::foo(foo&&) = default;
+foo& foo::operator=(foo&&) = default;
+
 // Remove compilation dependencies on internal class implementations
 // and improve compile times.
 // 
@@ -59,6 +65,14 @@ foo::~foo() = default;
 // the header file on [13], its definition appears in the
 // implementation file on [20-30]. This allows the class definition
 // to change without requiring users of `foo` to recompile.
+//
+// We have explicitly defaulted `foo`'s destructor on [42], which
+// is necessary because the destructor needs to be able to see the
+// complete definition of `impl` (in order to destroy the
+// `std::unique_ptr`). Note that we have also explicitly defaulted
+// the move constructor and assignment operator on [44-45] so that
+// `foo` can be moved. To make `foo` copyable, we must also
+// implement the copy constructor and assignment operator.
 
 int main()
 {

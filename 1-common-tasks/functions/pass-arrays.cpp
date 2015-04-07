@@ -22,6 +22,10 @@ int main()
 
 // Pass fixed-size arrays to and from functions.
 // 
+// **Note**: This sample uses experimental entities from the Library
+// Fundamentals TS that demonstrate likely upcoming features in C++
+// but should not be used in production code.
+// 
 // C++ arrays are not copyable, so cannot be passed to and from
 // functions by value. The traditional approach is to pass both a
 // pointer to an array's first element and the size of the array.

@@ -1,93 +1,91 @@
 // Visitor
 
-#include <functional> // for std::reference_wrapper
-#include <iostream> // for std::cout
-#include <vector>
+class element_concrete_1;
+class element_concrete_2;
 
-// Forward define this
-class shape_visitor;
-
-class shape
+class visitor
 {
 	public:
-		virtual void accept(shape_visitor& visitor) = 0;
+		virtual void visit(element_concrete_1& el) = 0;
+		virtual void visit(element_concrete_2& el) = 0;
 };
 
-// We need to forward define these here so that the visitor interface knows about them
-class circle;
-class square;
-
-class shape_visitor
+class visitor_concrete : public visitor
 {
 	public:
-		virtual void visit(circle& shape) = 0;
-		virtual void visit(square& shape) = 0;
-};
-
-class circle : public shape
-{
-	public:
-		virtual void accept(shape_visitor& visitor)
+		virtual void visit(element_concrete_1& el) override
 		{
-			visitor.visit(*this);
-		}
-};
-
-class square : public shape
-{
-	public:
-		virtual void accept(shape_visitor& visitor)
-		{
-			visitor.visit(*this);
-		}
-};
-
-class print_visitor : public shape_visitor
-{
-	public:
-		virtual void visit(circle& shape)
-		{
-			std::cout << "Visited a circle" << std::endl;
+			// Do something with el
 		};
 		
-		virtual void visit(square& shape)
+		virtual void visit(element_concrete_2& el) override
 		{
-			std::cout << "Visited a square" << std::endl;
+			// Do something with b
 		};
 };
 
-// Visit different types of shapes and print their types.
+
+class element
+{
+	public:
+		virtual void accept(visitor& v) = 0;
+};
+
+class element_concrete_1 : public element
+{
+	public:
+		virtual void accept(visitor& v) override
+		{
+			v.visit(*this);
+		}
+};
+
+class element_concrete_2 : public element
+{
+	public:
+		virtual void accept(visitor& v) override
+		{
+			v.visit(*this);
+		}
+};
+
+// Separate generic algorithms from the elements or structure on which
+// they operate.
 // 
 // The visitor pattern allows generic algorithms to be implemented 
-// without adding to the underlying objects and allows different actions
-// for each type of object being visited without the need for dynamic casting.
+// without modifying the objects on which they operate and supports
+// different actions for each type of object without the need for
+// dynamic casting.
 // 
-// The `shape` class, defined on [10-14], defines
-// an interface that allows it to accept a shape visitor. Each specialization 
-// a shape implements this method to call the appropriate
-// visit function on the visitor. This is know as 'double dispatch'
-// because there are 2 concrete function calls.
-// Visitors, in this case, are objects that
-// implement the `shape_visitor` interface ([34-39]). The
-// visitor interface defines visit functions for each type of shape.
-// This way, the compiler helps to detect
+// The `element` class, defined on [28-32], defines an interface that
+// allows an object to accept a visitor. Each class derived from
+// `element`, such as those on [34-50], implements the `accept`
+// function such that it calls the appropriate `visit` function on the
+// visitor.
 // 
-// In this example, a `print_visitor` ([41-53]) is used to print the type
-// of shape that each item in the shapes vector is. Other simple examples
-// could include calculating the area of a given shape.
+// Visitors, which implement the `visitor` interface ([6-11]),
+// represent algorithms to be applied to `element`s. The visitor
+// interface defines `visit` overloads for each type of `element`. An
+// example `visitor` is defined on [13-25].
+// 
+// When a `visitor` visits an `element`, two function calls are made
+// (one to `accept` and one to `visit`) and the final `visit` function
+// that is called depends on the type of both the `element` and the
+// `visitor`. This process is known as *double dispatch*.
+// 
+// The visitor pattern is particularly useful when the `element`s are
+// part of a larger structure, in which case the `accept` function can
+// call itself recursively down the structure.
+ 
 int main()
 {
-	std::vector<std::reference_wrapper<shape>> shapes;
+	element_concrete_1 x;
+	element_concrete_2 y;
+
+	element& el1 = x;
+	element& el2 = y;
 	
-	circle myCircle;
-	shapes.push_back(myCircle);
-	
-	square mySquare;
-	shapes.push_back(mySquare);
-	
-	print_visitor v;
-	for (shape& s : shapes)
-	{
-		s.accept(v);
-	}
+	visitor_concrete v;
+	el1.accept(v);
+	el2.accept(v);
 };

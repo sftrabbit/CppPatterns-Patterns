@@ -78,6 +78,23 @@ void insertion_sort(BidirectionalRange& range)
 #include <list>
 #include <cassert>
 
+struct OrderedPair {
+	int first, second;
+
+	// Default ordering considers only the first member
+	bool operator<(const OrderedPair &ot) const {
+		return first < ot.first;
+	}
+
+	bool operator>(const OrderedPair &ot) const {
+		return ot < *this;
+	}
+
+	bool operator==(const OrderedPair &ot) const {
+		return first == ot.first && second == ot.second;
+	}
+};
+
 int main()
 {
 	// Basic test
@@ -88,11 +105,10 @@ int main()
 			std::begin(arr_sorted)));
 
 	// Test sorting stability
-	typedef std::pair<int, int> pii;
-	std::list<pii> arr_pii_start  =
+	std::list<OrderedPair> arr_pii_start  =
 		{ {3,0}, {4,0}, {1,0}, {8,0}, {9,0}, {4,1}, {3,1}, {2,0}, {9,1},
 			{1,1}, {2,1}, {8,1}, {3,2}, {5,0}, {7,0} };
-	std::list<pii> arr_pii_sorted =
+	std::list<OrderedPair> arr_pii_sorted =
 		{ {1,0}, {1,1}, {2,0}, {2,1}, {3,0}, {3,1}, {3,2}, {4,0}, {4,1},
 			{5,0}, {7,0}, {8,0}, {8,1}, {9,0}, {9,1} };
 	insertion_sort(arr_pii_start);

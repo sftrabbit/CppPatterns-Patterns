@@ -17,7 +17,7 @@ void bubble_sort(ForwardRange& range)
 		for (iterator i = begin; std::next(i) != end; std::advance(i, 1)) {
 			iterator next = std::next(i);
 
-			if (*i > *next) {
+			if (*next < *i) {
 				std::iter_swap(i, next);
 				new_end = next;
 			}

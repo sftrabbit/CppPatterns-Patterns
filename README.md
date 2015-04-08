@@ -105,7 +105,7 @@ The sample description is processed as a form of Markdown with the
 following extensions:
 
 1.  Line references are added with the `[XX-YY]` syntax. The `-YY` is
-    optional and used to denote a range of lines. An excalamation mark
+    optional and used to denote a range of lines. An exclamation mark
     after the opening bracket causes the output to be capitalized.
 
     The numbers provided should denote line numbers in the original

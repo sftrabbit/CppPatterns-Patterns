@@ -38,10 +38,10 @@ void use(base<derived>& b)
 int main(int argc, char** argv)
 {
 	bar b;
-    use(b); // Outputs: bar::foo_implementation called
+	use(b); // Outputs: bar::foo_implementation called
 
 	baz f;
-    use(f); // Outputs: base::foo_implementation called
+	use(f); // Outputs: base::foo_implementation called
 }
 
 // Provide common methods, with default implementations, that can be overriden

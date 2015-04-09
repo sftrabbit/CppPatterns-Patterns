@@ -33,3 +33,6 @@ int main()
 // 
 // In other cases, you may instead wish to
 // [share ownership of an object](/common-tasks/shared-ownership.html).
+// 
+// **Note**: `std::make_unique` was introduced in C++14. For C++11,
+// you can [roll your own implementation](http://stackoverflow.com/a/17902439/150634).

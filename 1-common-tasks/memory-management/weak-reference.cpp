@@ -1,87 +1,75 @@
 // Weak Reference
 
-#include <algorithm>
-#include <functional>
+#include <iostream>
 #include <memory>
-#include <vector>
 
-class observer
+class foo;
+
+class bar
 {
 public:
-	virtual void notify() = 0;
-};
-
-class observer_concrete : public observer
-{
-public:
-	virtual void notify() override {}
-};
-
-class subject
-{
-public:
-	void register_observer(const std::shared_ptr<observer>& so)
+	void set_foo(const std::shared_ptr<foo>& foo)
 	{
-		std::weak_ptr<observer> wo = so;
-		observers.push_back(wo);
+		this->sp = foo;
 	}
 
-	void notify_observers()
-	{
-		for (std::weak_ptr<observer>& o : observers) {
-			std::shared_ptr<observer> so = o.lock();
-			if (so)
-				so->notify();
-		}
+	void notify_ready() {}
 
-		std::remove_if(
-			std::begin(observers),
-			std::end(observers),
-			[] (const std::weak_ptr<observer>& o) { return o.expired(); });
+private:
+	std::shared_ptr<foo> sp;
+};
+
+class foo
+{
+public:
+	void set_bar(const std::weak_ptr<bar>& bar)
+	{
+		this->wp = bar;
+	}
+
+	void start()
+	{
+		std::shared_ptr<bar> sp = this->wp.lock();
+		if (sp)
+			sp->notify_ready();
 	}
 
 private:
-	std::vector<std::weak_ptr<observer>> observers;
+	std::weak_ptr<bar> wp;
 };
 
+
+
 // Maintain a non-owning (weak) reference to a dynamically allocated object
-// managed by a [`std::shared_ptr`].
+// managed by a [`std::shared_ptr`](cpp/memory/shared_ptr) to avoid a circular
+// dependency.
 //
 // Weak pointers are non-owning references. As they do not contribute to the
 // reference count of the managed object they refer to, the object can be
-// deleted by another unit of code at any time. However, a [`std::weak_ptr`] can
-// be converted to a [`std::shared_ptr`] to provide temporary ownership and safe
+// deleted by another unit of code at any time. However, a
+// [`std::weak_ptr`](cpp/memory/weak_ptr) can be converted to a
+// [`std::shared_ptr`] to provide temporary ownership and safe
 // access to the object.
 //
-// The observer pattern allows generic observer objects to be registered with a
-// subject object and receive notifications when certain events occur. To avoid
-// notifying observer objects that have been deleted, and to avoid keeping
-// observer objects alive longer than their natural lifetime, we use weak
-// pointers.
-//
-// In this modified example of the observer pattern, the `subject` class,
-// defined on [18-42], contains a [`std::vector`](cpp/container/vector),
-// `observers`, of weak references to observers. Observers (also known as
-// listeners), in this case, are objects that implement the `observer` interface
-// ([6-10]). The `register_observer` function ([18-42]) adds weak references to
-// the `observers`. To notify the observers, the `notify_observers` function
-// ([26-38]) iterates over each weak reference to an observer object, obtains
-// temporary ownership by creating a [`std::shared_ptr`] from the
-// [`std::weak_ptr`] and checking that the observer object is still alive
-// (28-32) before notifying it. To avoid wasting space tracking observer objects
-// that have been deleted, expired weak references are purged (34-37).
+// In this example a bar object may depend on a foo object and should be
+// notified when the foo is ready. However bar's lifetime is independent of
+// foo's. If foo stores a plain reference to bar, it risks refering to a
+// deleted object when it attempts to notify bar. If foo stores a
+// [`std::shared_ptr`] to bar, it introduces a circular dependency,
+// unnecessarily preventing foo from being deleted. The solution is to use a
+// [`std::weak_ptr`]. When foo is started, it checks if bar still exists by
+// attempting to take temporary ownership and then notifies bar that it is
+// ready (30-32).
 
 int main()
 {
-	subject s;
-
-	std::shared_ptr<observer> o1 = std::make_shared<observer_concrete>();
-	s.register_observer(o1);
+	std::shared_ptr<foo> f = std::make_shared<foo>();
 
 	{
-		std::shared_ptr<observer> o2 = std::make_shared<observer_concrete>();
-		s.register_observer(o2);
+		std::shared_ptr<bar> b = std::make_shared<bar>();
+		b->set_foo(f);
+		f->set_bar(b);
 	}
 
-	s.notify_observers();
+	f->start();
 }

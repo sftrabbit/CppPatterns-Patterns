@@ -1,7 +1,6 @@
 // Class template SFINAE
 
 #include <type_traits>
-#include <limits>
 
 template <typename T, typename Enable = void>
 class foo;
@@ -19,9 +18,9 @@ class foo<T, typename std::enable_if<std::is_floating_point<T>::value>::type>
 // 
 // We provide two partial specializations of the `foo` class template:
 // 
-// 1. The template on [9-11] will only be instantiated when `T` is an
+// 1. The template on [8-10] will only be instantiated when `T` is an
 //    integral type.
-// 2. The template on [13-15] will only be instantiated when `T` is a
+// 2. The template on [12-14] will only be instantiated when `T` is a
 //    floating point type.
 //    
 // This allows us to provide different implementations of the `foo`

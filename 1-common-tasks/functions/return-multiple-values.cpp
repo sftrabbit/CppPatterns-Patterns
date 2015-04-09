@@ -1,4 +1,5 @@
 // Return multiple values
+// C++11
 
 #include <tuple>
 
@@ -18,13 +19,13 @@ int main()
 
 // Return multiple values of different types from a function.
 // 
-// The `foo` function on [5-8] returns a
+// The `foo` function on [6-9] returns a
 // [`std::tuple`](cpp/utility/tuple) representing multiple values
 // of different types. We make use of the
 // [`std::make_tuple`](cpp/utility/tuple/make_tuple) utility function
 // to create the `std::tuple` object.
 // 
-// On [16], we call this function and use [`std::tie`](cpp/utility/tuple/tie)
+// On [17], we call this function and use [`std::tie`](cpp/utility/tuple/tie)
 // to assign the return values to each of the given objects.
 // If we cannot create the objects prior to this call, we can
 // alternatively store the resulting `std::tuple` object and use

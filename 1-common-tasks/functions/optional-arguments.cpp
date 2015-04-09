@@ -1,4 +1,5 @@
 // Optional arguments
+// Experimental
 
 #include <experimental/optional>
 
@@ -24,11 +25,11 @@ int main()
 // Fundamentals TS that demonstrate likely upcoming features in C++
 // but should not be used in production code.
 // 
-// The function `foo`, on [8-11], takes three arguments, two of which
+// The function `foo`, on [9-12], takes three arguments, two of which
 // have type
 // [`std::experimental::optional`](cpp/experimental/optional) (from
 // the Library Fundamentals TS). This allows the value of those
-// arguments to be omitted, as shown on [16-18], where
+// arguments to be omitted, as shown on [17-19], where
 // [`std::experimental::nullopt`](cpp/experimental/optional/nullopt)
 // represents no value.
 // 

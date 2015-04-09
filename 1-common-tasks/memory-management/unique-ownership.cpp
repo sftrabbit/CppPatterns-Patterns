@@ -1,4 +1,5 @@
 // Unique ownership
+// C++11, C++14
 
 #include <memory>
 #include <utility>
@@ -17,15 +18,15 @@ int main()
 // Transfer unique ownership of a dynamically allocated object to
 // another unit of code.
 // 
-// On [13], we create a [`std::unique_ptr`](cpp/memory/unique_ptr)
+// On [14], we create a [`std::unique_ptr`](cpp/memory/unique_ptr)
 // which has ownership of a dynamically allocated `foo` object
 // (created with the [`std::make_unique`](cpp/memory/unique_ptr/make_unique)
-// utility function). [!14] then demonstrates passing ownership of this
+// utility function). [!15] then demonstrates passing ownership of this
 // object to the function `func`. After passing ownership, `main` no
 // longer has access to the `foo` object.
 // 
 // As `std::unique_ptr` is non-copyable, it must be moved instead of
-// being copied. The call to [`std::move`](cpp/utility/move) on [14]
+// being copied. The call to [`std::move`](cpp/utility/move) on [15]
 // allows `obj` to be treated like a temporary object (the expression
 // `std::move(obj)` is an rvalue) so that it can be moved into the
 // function.

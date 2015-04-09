@@ -1,4 +1,5 @@
 // Choose a random element
+// C++11
  
 #include <random>
 #include <vector>
@@ -16,16 +17,16 @@ int main()
 
 // Choose a random element from a container.
 // 
-// On [8], we create a [`std::vector`](cpp/container/vector) from
+// On [9], we create a [`std::vector`](cpp/container/vector) from
 // which we want to select a random element.
 // 
 // We then effectively [roll a die](/common-tasks/roll-a-die.html)
 // where the numbers on the die are the indices of elements in the
 // container. That is, we seed the
 // [`std::mt19937`](cpp/numeric/random/mersenne_twister_engine) on
-// [10-11] and create a uniform random distribution of integers from
-// `0` to `v.size() - 1` inclusive on [12]. This distribution will
+// [11-12] and create a uniform random distribution of integers from
+// `0` to `v.size() - 1` inclusive on [13]. This distribution will
 // give us any integer in this range with equal probability.
 // 
-// On [14], we call `dist(engine)` to generate the random index, and
+// On [15], we call `dist(engine)` to generate the random index, and
 // use this value to access an element from `v`.

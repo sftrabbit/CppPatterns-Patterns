@@ -1,4 +1,5 @@
 // Bubble sort
+// C++11
 
 #include <iterator>
 #include <utility>
@@ -36,27 +37,27 @@ void bubble_sort(ForwardRange& range)
 // 
 // We define `bubble_sort` as a template, whose template parameter
 // `ForwardRange` must be a range that provides forward iterators.
-// The type alias `iterator` on [9] denotes the iterator type for
+// The type alias `iterator` on [10] denotes the iterator type for
 // the given container, which is the type returned by
 // [`std::begin(range)`](cpp/iterator/begin)). Defining it in this
 // way allows the function to be used with both containers and normal
 // arrays.
 // 
 // We then create a pair of iterators, `begin` and `end`, denoting
-// the start and end of the range ([11-12]). As the `while` loop on
-// [14-27] iterates, we will be bubbling the largest elements to the
+// the start and end of the range ([12-13]). As the `while` loop on
+// [15-28] iterates, we will be bubbling the largest elements to the
 // end of the range. Because of this, with each iteration we can
 // look at a shorter range, bringing `end` closer to `begin` and
 // stopping when they are equal.
 // 
-// The inner loop on [17-24] looks at adjacent pairs of iterators
+// The inner loop on [18-25] looks at adjacent pairs of iterators
 // between `begin` and `end`, denoted by `i` and `next`. We compare
-// the two elements on [20] and swap them over ([21]) if the first is
+// the two elements on [21] and swap them over ([22]) if the first is
 // greater than the second. This bubbles the largest values to the end
 // of the range.
 // 
 // We keep track of the last `next` element that we swapped into with
-// `new_end` ([22]). Every element after this one is guaranteed to be
+// `new_end` ([23]). Every element after this one is guaranteed to be
 // sorted (because we didn't do any more swapping), so we can set
 // `end` to `new_end`.
 // 

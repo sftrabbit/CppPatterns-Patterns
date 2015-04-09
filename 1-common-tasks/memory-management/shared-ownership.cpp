@@ -1,4 +1,5 @@
 // Shared ownership
+// C++11
 
 #include <memory>
 #include <utility>
@@ -17,10 +18,10 @@ int main()
 // Share ownership of a dynamically allocated object with another
 // unit of code.
 // 
-// On [13], we create a [`std::shared_ptr`](cpp/memory/shared_ptr)
+// On [14], we create a [`std::shared_ptr`](cpp/memory/shared_ptr)
 // which has ownership of a dynamically allocated `foo` object
 // (allocated with the [`std::make_shared`](cpp/memory/shared_ptr/make_shared)
-// utility function). [!14] then demonstrates sharing ownership of this
+// utility function). [!15] then demonstrates sharing ownership of this
 // object with a function. That is, both `main` and `func` have access
 // to the same `foo` object. When ownership of an object is shared, it
 // will only be destroyed when all `std::shared_ptr`s owning it are

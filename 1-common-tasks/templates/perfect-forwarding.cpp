@@ -1,4 +1,5 @@
 // Perfect forwarding
+// C++11
 
 #include <utility>
 
@@ -18,9 +19,9 @@ std::pair<T, U> make_pair_wrapper(T&& t, U&& u)
 // reference* (also known as *universal reference*), then forward it
 // using [`std::forward`](cpp/utility/forward).
 // 
-// In our example, the arguments `t` and `u` on [6] are forwarding
+// In our example, the arguments `t` and `u` on [7] are forwarding
 // references because they are declared in the form `X&&` where `X`
-// is a template parameter. We use `std::forward` on [8-9] to forward
+// is a template parameter. We use `std::forward` on [9-10] to forward
 // these arguments to [`std::make_pair`](cpp/utility/pair/make_pair),
 // allowing them to be moved into the pair when the original argument
 // was an rvalue expression.

@@ -1,4 +1,5 @@
 // Function template SFINAE
+// C++11
 
 #include <type_traits>
 #include <limits>
@@ -23,13 +24,13 @@ typename std::enable_if<std::is_floating_point<T>::value, bool>::type
 // 
 // We provide two implementations of the `equal` function template:
 // 
-// 1. The template on [7-12] will only be instantiated when `T` is an
+// 1. The template on [8-13] will only be instantiated when `T` is an
 //    integral type.
-// 2. The template on [14-19] will only be instantiated when `T` is a
+// 2. The template on [15-20] will only be instantiated when `T` is a
 //    floating point type.
 //
-// We have used [`std::enable_if`](cpp/types/enable_if) on [8] and
-// [15] to force instantiation to succeed only for the appropriate
+// We have used [`std::enable_if`](cpp/types/enable_if) on [9] and
+// [16] to force instantiation to succeed only for the appropriate
 // template arguments. This relies on [Substitution Failure Is Not An
 // Error](http://en.wikipedia.org/wiki/Substitution_failure_is_not_an_error)
 // (SFINAE), which states that

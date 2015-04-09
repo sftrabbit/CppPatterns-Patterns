@@ -74,6 +74,9 @@ foo& foo::operator=(foo&&) = default;
 // the move constructor and assignment operator on [45-46] so that
 // `foo` can be moved. To make `foo` copyable, we must also
 // implement the copy constructor and assignment operator.
+// 
+// **Note**: `std::make_unique` was introduced in C++14. For C++11,
+// you can [roll your own implementation](http://stackoverflow.com/a/17902439/150634).
 
 int main()
 {

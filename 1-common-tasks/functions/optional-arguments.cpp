@@ -41,3 +41,9 @@ int main()
 // If you are constructing an object with a complex combinatorial set
 // of optional arguments, consider using the
 // [builder pattern](/patterns/builder.html).
+// 
+// **Note**: `std::experimental::optional` and
+// `std::experimental::nullopt` are part of the Library Fundamentals
+// Technical Specification, which provides experimental features that
+// may soon be introduced to the C++ standard. They should not be used
+// in production code.

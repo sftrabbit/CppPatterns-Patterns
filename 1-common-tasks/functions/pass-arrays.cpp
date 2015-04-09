@@ -23,10 +23,6 @@ int main()
 
 // Pass fixed-size arrays to and from functions.
 // 
-// **Note**: This sample uses experimental entities from the Library
-// Fundamentals TS that demonstrate likely upcoming features in C++
-// but should not be used in production code.
-// 
 // Built-in array types are not copyable, so cannot be passed to and
 // from functions by value. The traditional approach is to pass both a
 // pointer to an array's first element and the size of the array.
@@ -45,3 +41,8 @@ int main()
 // represents *run-time* fixed-size arrays. This type can be created with
 // any size at run time, but cannot change size once created. [!19-21]
 // demonstrate passing arrays of various sizes to this function.
+// 
+// **Note**: `std::experimental::dynarray` is part of the Arrays
+// Technical Specification, which provides experimental features that
+// may soon be introduced to the C++ standard. It should not be used
+// in production code.

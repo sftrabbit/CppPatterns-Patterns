@@ -2,7 +2,6 @@
 // C++11
 
 #include <type_traits>
-#include <limits>
 
 template <typename T, typename Enable = void>
 class foo;
@@ -20,15 +19,15 @@ class foo<T, typename std::enable_if<std::is_floating_point<T>::value>::type>
 // 
 // We provide two partial specializations of the `foo` class template:
 // 
-// 1. The template on [10-12] will only be instantiated when `T` is an
+// 1. The template on [9-11] will only be instantiated when `T` is an
 //    integral type.
-// 2. The template on [14-16] will only be instantiated when `T` is a
+// 2. The template on [13-15] will only be instantiated when `T` is a
 //    floating point type.
 //    
 // This allows us to provide different implementations of the `foo`
 // class depending on the template arguments it is instantiated with.
 // 
-// We have used [`std::enable_if`](cpp/types/enable_if) on [11] and
+// We have used [`std::enable_if`](cpp/types/enable_if) on [10] and
 // [14] to force instantiation to succeed only for the appropriate
 // template arguments. This relies on [Substitution Failure Is Not An
 // Error](http://en.wikipedia.org/wiki/Substitution_failure_is_not_an_error)

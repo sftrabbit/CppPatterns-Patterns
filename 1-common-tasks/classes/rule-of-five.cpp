@@ -27,6 +27,7 @@ class foo
 		{
 			if (&other != this) {
 				delete p;
+				p = nullptr;
 				p = new resource{*(other.p)};
 			}
 
@@ -56,6 +57,7 @@ class foo
 // Safely and efficiently implement RAII to encapsulate the
 // management of dynamically allocated resources.
 // 
+// The rule of five is a modern expansion of the rule of three.
 // Firstly, the *rule of three* specifies that if a class implements
 // any of the following functions, it should implement all of them:
 // 
@@ -74,24 +76,26 @@ class foo
 // - move constructor
 // - move assignment operator
 // 
-// The class `foo`, on [9-54], dynamically allocates a `resource`
+// The class `foo`, on [9-55], dynamically allocates a `resource`
 // object in its constructor. The implementations of `foo`'s
-// copy constructor ([16-18]), copy assignment operator ([26-34]),
-// and destructor ([47-50]) ensure that the lifetime of this
+// copy constructor ([16-18]), copy assignment operator ([26-35]),
+// and destructor ([48-51]) ensure that the lifetime of this
 // resource is safely managed by `foo` object that contains it,
 // even in the event of an exception.
 // 
 // We have also implemented a move constructor ([20-24]) and
-// move assignment operator ([36-45]) that provide optimized copies
+// move assignment operator ([37-46]) that provide optimized copies
 // from temporary objects. Rather than copy the resource, they
 // take the resource from the original `foo` and set its 
 // internal pointer to `nullptr`, effectively stealing the resource.
 // 
-// Notice that the assignment operators ([26-45]) check for
-// self-assignment to ensure that there are no bugs.
+// Notice that the assignment operators ([26-46]) check for
+// self-assignment to ensure safe management of the resource.
 // 
-// **Note**: The copy and move assignment operators may be
-// alternatively implemented with the copy-and-swap idiom.
+// **Note**: The copy and move assignment operators in this sample
+// provide only basic exception safety. They may alternatively be
+// implemented with the copy-and-swap idiom, which provides strong
+// exception safety at an optimisation cost.
 // 
 // **Note**: We can typically avoid manual memory management and
 // having to write the copy constructor, assignment operator, and

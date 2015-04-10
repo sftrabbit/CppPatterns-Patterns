@@ -73,6 +73,7 @@ file name to change, then it should be a new sample.
 Every sample `.cpp` file must be structured as follows:
 
     // Title
+    // Tag1, Tag2
 
     Sample code
 
@@ -84,7 +85,9 @@ Every sample `.cpp` file must be structured as follows:
 
     Hidden code
 
-The title comment must be a single line.
+The title comment and tags comment must each be a single line. The
+tags comment is optional. The tags line should be a comma separated
+list of tags.
 
 The intent and description are processed as an extended form of
 [Markdown](http://daringfireball.net/projects/markdown/), which means

@@ -1,4 +1,5 @@
 // Observer
+// C++11
 
 #include <vector>
 #include <functional>
@@ -41,13 +42,18 @@ class subject
 // registered with a subject object and receive notifications
 // when certain events occur.
 // 
-// The `subject` class, defined on [19-36], contains a
-// [`std::vector`](cpp/container/vector) of references to observers.
+// The `subject` class, defined on [20-37], contains a
+// [`std::vector`](cpp/container/vector) of references to observers [36].
 // Observers (also known as listeners), in this case, are objects that
-// implement the `observer` interface ([6-10]). The
-// `register_observer` function ([22-25]) adds observers
+// implement the `observer` interface ([7-11]). The
+// `register_observer` function ([23-26]) adds observers
 // to this `std::vector`, which are later to be notified by the
-// `notify_observers` function ([27-32]).
+// `notify_observers` function ([28-33]).
+// 
+// We use [`std::reference_wrapper`](cpp/utility/functional/reference_wrapper)
+// for the elements of the `std::vector` ([36]), because the standard
+// containers require the element type to be assignable, which normal
+// reference types are not.
 
 int main()
 {

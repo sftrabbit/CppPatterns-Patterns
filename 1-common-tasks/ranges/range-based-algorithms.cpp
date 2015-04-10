@@ -15,7 +15,7 @@ void algorithm(ForwardRange& range)
 	iterator it_begin = begin(range);
 	iterator it_end = end(range);
 
-	// Now perform algorithm on elements between begin and end
+	// Now use it_begin and it_end to implement algorithm
 }
 
 // Implement algorithms that can be applied to any generic range of

@@ -10,10 +10,12 @@ std::tuple<int, bool, float> foo()
 
 int main()
 {
+	std::tuple<int, bool, float> result = foo();
+	int value = std::get<0>(result);
+
 	int obj1;
 	bool obj2;
 	float obj3;
-
 	std::tie(obj1, obj2, obj3) = foo();
 }
 
@@ -25,11 +27,14 @@ int main()
 // [`std::make_tuple`](cpp/utility/tuple/make_tuple) utility function
 // to create the `std::tuple` object.
 // 
-// On [17], we call this function and use [`std::tie`](cpp/utility/tuple/tie)
+// On [13], we call this function and store the result. We then get
+// the first of the returned values with [`std::get`](cpp/utility/tuple/get)
+// on [14].
+// 
+// Alternatively, on [19] we use [`std::tie`](cpp/utility/tuple/tie)
 // to assign the return values to each of the given objects.
-// If we cannot create the objects prior to this call, we can
-// alternatively store the resulting `std::tuple` object and use
-// [`std::get`](cpp/utility/tuple/get) to get the values from it.
+// This may not be possible if the objects cannot be constructed
+// beforehand and it removes the possibility of copy elision.
 // 
 // If the values are closely and logically related, consider composing
-// them into a `struct` or `class`.
+// them into a `struct` or `class` type.

@@ -32,8 +32,8 @@ int main()
 // 
 // In the condition of the `if` statement on [17-20], we first perform
 // an unformatted extraction with
-// [`std::getline`](cpp/string/basic_string/getline) [17]
-// and then a series of formatted extractions [18]. The `&&` operator
+// [`std::getline`](cpp/string/basic_string/getline) ([17])
+// and then a series of formatted extractions ([18]). The `&&` operator
 // ensures that the condition is `true` only when all extractions
 // succeed. Short-circuiting also ensures that the second set of
 // extractions are only attempted if the previous extraction was

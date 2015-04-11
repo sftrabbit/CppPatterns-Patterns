@@ -47,8 +47,8 @@ private:
 // they refer to, the object can be destroyed at any time when all
 // `std::shared_ptr`s give up ownership. However, a
 // [`std::weak_ptr`](cpp/memory/weak_ptr) can be converted to a
-// [`std::shared_ptr`] to provide temporary ownership and safe access to the
-// object.
+// [`std::shared_ptr`](cpp/memory/shared_ptr) to provide temporary
+// ownership and safe access to the object.
 //
 // In this sample, we have two classes: `foo` on [8-18], and `bar` on
 // [20-34]. A `foo` object has shared ownership of a `bar` ([17]), and

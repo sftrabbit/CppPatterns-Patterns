@@ -95,7 +95,8 @@ class foo
 // 
 // **Note**: The copy and move assignment operators in this sample
 // provide only basic exception safety. They may alternatively be
-// implemented with the copy-and-swap idiom, which provides strong
+// implemented with [the copy-and-swap
+// idiom](/common-tasks/copy-and-swap.html), which provides strong
 // exception safety at an optimisation cost.
 // 
 // **Note**: We can typically avoid manual memory management and

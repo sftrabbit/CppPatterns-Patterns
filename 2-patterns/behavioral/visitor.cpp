@@ -20,7 +20,7 @@ class visitor_concrete : public visitor
 		
 		virtual void visit(element_concrete_2& el) override
 		{
-			// Do something with b
+			// Do something with el
 		};
 };
 

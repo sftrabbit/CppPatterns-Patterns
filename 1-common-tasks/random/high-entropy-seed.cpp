@@ -1,4 +1,4 @@
-// Seed with high entropy
+// High entropy seeds
 // C++11
 
 #include <random>

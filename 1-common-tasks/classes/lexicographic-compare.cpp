@@ -1,4 +1,4 @@
-// Lexicographic-compare
+// Lexicographic ordering
 // C++11
 
 #include <tuple>
@@ -12,8 +12,8 @@ class foo
 
 		friend bool operator<(const foo& lh, const foo& rh)
 		{
-			return	  std::tie(lh.n, lh.c, lh.d)
-				< std::tie(rh.n, rh.c, rh.d);
+			return std::tie(lh.n, lh.c, lh.d) <
+			       std::tie(rh.n, rh.c, rh.d);
 		}
 	private:
 		int n;
@@ -21,27 +21,25 @@ class foo
 		double d;
 };
 
-// Implement compare of multiple members with std::tie
+// Implement a lexicographic ordering over class members.
 // 
-// Getting an order relation right with 3 elements or more is
-// tedious and easy to get wrong. Fortunately the standard
-// library does it with tuples. The function template std::tie()
-// creates a tuple with references to its arguments.
+// The class `foo`, on [6-22], has three member variables `n`, `c` and
+// `d` declared on [19-21]. We wish to implement an ordering relation
+// for `foo` where these members are compared lexicographically.
 // 
-// The class `foo`, on [6-22] has three member variables `n`, `c` and `d`
-// declared on [19-21].
+// Getting an ordering relation right with 3 elements or more is
+// tedious and error-prone. Fortunately, the standard library
+// provides a lexicographic ordering over
+// [`std::tuple`](cpp/utility/tuple), which we can utilise.
 // 
-// The less-than operator on [13-17] compares two `foo`s on the member
-// `n` first, on the member `c` if the `n`s are equal, and finally on
-// `d` if both the `n`s and `c`s are equal.
-// 
-// The formatting [14-15] to align the left hand and right hand
-// arguments straight below each others makes it easier to spot
-// mistakes as assymetries.
-// 
-// It is not necessary to declare the less-than operator as a friend
-// function [13], it can be implemented as a member function as well,
-// but this is a common idiom.
+// The less-than operator for `foo` defined on [13-17] compares the
+// member `n` first, then `c` if the `n`s are equal, and finally the
+// member `d` if both the `n`s and `c`s are equal. To achieve this,
+// we use [`std::tie`](cpp/utility/tuple/tie) on [15] and [16] to
+// create `std::tuple`s containing references to the members of
+// the left operand and right operand respectively. The comparison
+// of these `std::tuple`s provides a lexicographic ordering over
+// these members.
 
 int main()
 {

@@ -1,36 +1,29 @@
-// Swap two values
+// Swap values
 
 #include <utility>
+#include <string>
 
 int main()
 {
-	int a = 0;
-	int b = 1;
+	std::string s1 = "Hello";
+	std::string s2 = "World";
 
 	using std::swap;
-	swap(a, b);
+	swap(s1, s2);
 }
 
 // Swap the values of two objects.
 // 
-// On [7-8] we create a pair of `int`s whose values we wish to swap.
+// On [8-9], we create two `std::string` objects whose values we wish
+// to swap. However, this sample will also apply to any other [swappable
+// type](http://en.cppreference.com/w/cpp/concept/Swappable).
 // 
-// On [10] we use a [`using` declaration](cpp/language/using_declaration)
-// to make `std::swap` visible.
-// 
-// On [11] we call `swap()` (not `std::swap()`) to swap the values
-// of the two objects.
-// After this line, the value of `a` is `1`, and the value of `b` is `0`.
-// 
-// We use this pattern in order to take advantage of
-// [argument-dependent lookup (ADL)](cpp/language/adl).
-// ADL can find a more efficient swap implementation if one exists,
-// but thanks to the `using` declaration we still have `std::swap`
-// available as a fallback.
-// 
-// If we just did the qualified call `std::swap(a, b)`, it would work
-// for almost all types, but it might be sub-optimal.
-// When we make an unqualified call to `swap()`, ADL will automatically
-// find a customized swap implementation if one exists.
-// We declare `std::swap` with a `using` declaration so if a customized
-// implementation isn't found, it will fall back on `std::swap`.
+// On [11], we use a [using-declaration](cpp/language/using_declaration)
+// to make `std::swap` visible and then, on [12], we call unqualified
+// `swap` (not `std::swap`) to swap the values of the two objects.
+// This allows a user-defined specialization of `swap` to be found
+// via [argument-dependent lookup (ADL)](cpp/language/adl), which may
+// provide a more efficient implementation of the swap operation,
+// before falling back to the generic `std::swap` function. This
+// approach is particularly useful when swapping two generic
+// objects (such as in a template).

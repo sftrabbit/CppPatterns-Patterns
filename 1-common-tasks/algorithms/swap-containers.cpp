@@ -32,8 +32,8 @@ int main()
 // at the same container as they did previously.
 // 
 // On [14], we use `std::vector`'s `swap` member function to swap the
-// contents all in one shot. [!16-17] perform the same operation with
-// the [generic swap pattern](/common-tasks/algorithms/swap-values.html).
+// contents all in one shot. Alternatively, [16-17] perform the same
+// operation with the [generic swap pattern](/common-tasks/swap-values.html).
 // This approach is much faster than `std::swap_ranges`, as it simply
 // swaps over the internal storage in constant time. It also does not
 // require the containers to have the same size. However, after the

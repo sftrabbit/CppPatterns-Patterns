@@ -6,7 +6,7 @@
 
 int main()
 {
-	std::map<string, int> m = { {"a", 1}, {"b", 2}, {"c", 3} };
+  std::map<string, int> m = { {"a", 1}, {"b", 2}, {"c", 3} };
   
   auto it = m.find("b");
   if (it != end(m))
@@ -16,7 +16,7 @@ int main()
   }
 }
 
-// Find the key-value pair corresponding to a certain key in a std::map.
+// Find the value corresponding to a certain key in a std::map.
 // 
 // On [8], we create a [`std::map`](cpp/container/map)
 // and initialise it with key-value pairs.

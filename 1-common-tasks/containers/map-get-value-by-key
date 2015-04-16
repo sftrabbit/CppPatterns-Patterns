@@ -1,4 +1,4 @@
-// Get the value corresponding to a certain key in std::map
+// Get the value corresponding to a certain key in a std::map
 // C++11
 
 #include <map>

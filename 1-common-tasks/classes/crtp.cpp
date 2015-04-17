@@ -1,60 +1,82 @@
-// Curiously Recurring Template Pattern
-
-#include <iostream>
+// Delegate behavior to derived classes
 
 template<typename derived>
-class base {
-public:
-	// Derived classes may override by defining foo_implementation().
-	void foo_interface()
-	{
-		static_cast<derived*>(this)->foo_implementation();
-	}
+class base
+{
+	public:
+		void do_something() const
+		{
+			// ...
+			static_cast<derived*>(this)->do_something_impl();
+			// ...
+		}
 
-private:
-	void foo_implementation()
-	{
-		std::cout << "base::foo_implementation called" << std::endl;
-	}
+	private:
+		void do_something_impl() const
+		{
+			// Default implementation
+		}
 };
 
-class bar : public base<bar> {
-public:
-	void foo_implementation()
-	{
-		std::cout << "bar::foo_implementation called" << std::endl;
-	}
+class foo : public base<foo>
+{
+	public:
+		void do_something_impl() const override
+		{
+			// Derived implementation
+		}
 };
 
-class baz : public base<baz> {
-};
+class bar : public base<bar>
+{ };
 
 template<typename derived>
 void use(base<derived>& b)
 {
-	b.foo_interface();
+	b.do_something();
 }
 
-int main(int argc, char** argv)
+// Delegate behavior to derived classes without incurring the cost of
+// run-time polymorphism.
+// 
+// With the Curiously Recurring Template Pattern (CRTP), which
+// provides a form of static polymorphism, we can delegate behavior
+// from a base class to its derived classes. This approach avoids the
+// costs associated with using `virtual` functions for run-time
+// polymorphism, typically implemented with a [virtual function
+// table](http://en.wikipedia.org/wiki/Virtual_method_table) (a
+// dynamic dispatch mechanism).
+// 
+// Classes `foo` and `bar`, on [21-31], demonstrate the CRTP idiom by
+// inheriting from the `base` class template ([3-19]) and providing
+// themselves as the template argument. For example, `foo` inherits
+// from `base<foo>` on [21]. This allows `base` to know which
+// class it is being inherited by at compile-time.
+// 
+// The `base` class provides a public member function,
+// `do_something` ([7-11]), which depends on `do_something_impl`, an
+// internal function that may optionally be overriden by derived
+// classes. In this way, `base` is able to delegate behavior to
+// derived classes. A default implementation for this function is
+// given on [15-18], while the class `foo` provides its own
+// implementation on [24-27]. To ensure that the correct
+// implementation is used, the `do_something` function casts 
+// `this` to a pointer to the derived type on [10] and calls
+// `do_something_impl` on it.
+// 
+// The `use` function template on [33-37] takes a reference to any
+// instantiation of `base` and calls `do_something` on it. As the
+// derived type is known at compile-time, the correct implementation
+// function is called without the need for dynamic dispatch. If a
+// `base<foo>` is provided, for example, `foo`'s implementation ([24-27])
+// will be invoked. For a `base<bar>`, on the other hand, the
+// default implementation defined by `base` will be used ([15-18]).
+
+int main()
 {
+	foo f;
+	use(f);
+
 	bar b;
-	use(b); // Outputs: bar::foo_implementation called
-
-	baz f;
-	use(f); // Outputs: base::foo_implementation called
+	use(b);
 }
-
-// Provide common methods, with default implementations, that can be overriden
-// by derived classes without the runtime overhead of virtual methods. This form
-// of static polymorphism is less flexible than the runtime equivalent, but
-// works for both instance and class (static) methods.
-//
-// The `base` class uses the Curiously Recurring Template Pattern to provide a
-// default implementation of its `foo_interface` [7-10] method. Derived classes
-// may then, optionally, override the method.
-//
-// The `bar` derived class overrides the method [21-24] and so `bar`'s
-// implementation is invoked at runtime [39] and [33]. The `baz` derived class does
-// not override the method, but still benefits from the default implementation
-// that gets called at runtime instead [42] and [33].
-

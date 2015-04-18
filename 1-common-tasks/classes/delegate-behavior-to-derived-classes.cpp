@@ -4,7 +4,7 @@ template<typename derived>
 class base
 {
 	public:
-		void do_something() const
+		void do_something()
 		{
 			// ...
 			static_cast<derived*>(this)->do_something_impl();
@@ -12,7 +12,7 @@ class base
 		}
 
 	private:
-		void do_something_impl() const
+		void do_something_impl()
 		{
 			// Default implementation
 		}
@@ -21,7 +21,7 @@ class base
 class foo : public base<foo>
 {
 	public:
-		void do_something_impl() const override
+		void do_something_impl()
 		{
 			// Derived implementation
 		}

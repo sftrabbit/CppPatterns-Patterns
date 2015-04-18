@@ -36,3 +36,6 @@ int main() {
 // While a `std::seed_seq` can be used to initialize multiple random
 // number engines, bear in mind that a particular `std::seed_seq` will
 // produce the same sequence of seeds each time it is used.
+// 
+// **Note**: An unpredictable random number engine is not necessarily
+// cryptographically secure.

@@ -1,7 +1,6 @@
 // Measure execution time
 
 #include <chrono>
-#include <iostream>
 
 int main()
 {
@@ -16,16 +15,16 @@ int main()
 
 // Measure the execution time of a unit of code.
 // 
-// We introduce the type alias `clock` on [8] such that it refers to
+// We introduce the type alias `clock` on [7] such that it refers to
 // the [`std::chrono::steady_clock`](cpp/chrono/steady_clock) type.
 // This type represents a monotonic (always increasing) clock.
 // 
-// Before and after the task that we wish to time ([10] and [12]
+// Before and after the task that we wish to time ([9] and [11]
 // respectively), we call the static member function `clock::now`
 // which gives us a
 // [`std::chrono::time_point`](cpp/chrono/time_point) representing the
 // point in time at which it was called. By subtracting the `start`
-// time point from the `end` time point on [14], we get a
+// time point from the `end` time point on [13], we get a
 // [`std::chrono::duration`](cpp/chrono/duration) representing the
 // time taken between these time points and, therefore, the execution
 // time of our task.

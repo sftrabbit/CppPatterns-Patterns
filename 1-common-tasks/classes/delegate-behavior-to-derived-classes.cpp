@@ -54,7 +54,7 @@ void use(base<derived>& b)
 // class it is being inherited by at compile-time.
 // 
 // The `base` class provides a public member function,
-// `do_something` ([7-11]), which depends on `do_something_impl`, an
+// `do_something` ([7-12]), which depends on `do_something_impl`, an
 // internal function that may optionally be overriden by derived
 // classes. In this way, `base` is able to delegate behavior to
 // derived classes. A default implementation for this function is

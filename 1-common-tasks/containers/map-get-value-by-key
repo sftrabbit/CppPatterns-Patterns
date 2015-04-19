@@ -14,6 +14,12 @@ int main()
      int value = it->second;
      // ... do something with value
   }
+  
+  // alternative: throws if "b" is not in m
+  int value = m.at("b");
+  
+  // alternative: default-constructs value if "b" is not in m
+  int value = m["b"];
 }
 
 // Find the value corresponding to a certain key in a std::map.
@@ -35,6 +41,14 @@ int main()
 // Note that here a common anti-pattern it's often used, that is retrieving the
 // value by using m[key]. This will result in another lookup, causing
 // performance penalty.
+//
+// On [19] an alternative: by using [`at`](cpp/container/map/at) we get 
+// a reference to the mapped value of the element with key equivalent to "b". 
+// If no such element exists, an exception of type std::out_of_range is thrown.
 // 
+// On [22] another alternative: by using [`operator[]`](cpp/container/map/operator_at)
+// we get a reference to the value that is mapped to a key equivalent to "b", 
+// performing an insertion if such key does not already exist.
+//
 // Note: in C++14 it's possible to do even better, without constructing an instance of the
 // searched key. See [`find`](cpp/container/map/find) for more details.

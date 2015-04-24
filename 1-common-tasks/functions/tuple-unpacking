@@ -1,0 +1,51 @@
+// Unpack a tuple to the parameters of a function
+// C++14
+
+#include <tuple>
+#include <utility>
+
+template<typename Tuple, typename F, size_t ...S >
+auto apply_tuple_impl(Tuple&& t, F&& fn, std::index_sequence<S...>)
+{
+  return std::forward<F>(fn)(std::get<S>(std::forward<Tuple>(t))...);
+}
+
+template<typename Tuple, typename F>
+auto apply_from_tuple(Tuple&& t, F&& fn)
+{
+  auto constexpr tSize = std::tuple_size<typename remove_reference<Tuple>::type>::value;
+  return apply_tuple_impl(std::forward<Tuple>(t), std::forward<F>(fn), std::make_index_sequence<tSize>());
+}
+
+int do_sum(int a, int b) 
+{
+  return a + b;
+}
+
+int main()
+{
+  int sum = apply_from_tuple(std::make_tuple(10, 20), do_sum); // 30
+}
+
+// Unpack a tuple to the parameters of a function/callable object and call it
+// 
+// The `apply_from_tuple` function on [12-17] returns the
+// result of applying the function fn to the arguments stored
+// in the [`std::tuple`](cpp/utility/tuple) t.
+// On [15] we store the size of the tuple t in tSize.
+// On [16] we call `apply_tuple_impl` passing t, fn and an 
+// [`std::index_sequence`](cpp/utility/integer_sequence) 
+// created from 0 to tSize.
+
+// `apply_tuple_impl` [6-10] returns the result of applying 
+// the function fn using all the elements of the tuple t as arguments (on [9]).
+// We apply [`std::get`](cpp/utility/tuple/get) to the tuple,
+// expanding the pack carried by the index_sequence. This way all the
+// elements of t are expanded and passed to the function.
+// 
+// Note (1): another way of writing `apply_from_tuple` is:
+// template<typename F, typename... T>
+// auto apply_from_tuple(std::tuple<T...> t, F&& fn)
+// {
+//   return apply_tuple_impl(t, std::forward<F>(fn), std::make_index_sequence<sizeof...(T)>());
+// }

@@ -1,0 +1,39 @@
+// Get the value corresponding to a certain key in std::map
+
+#include <map>
+#include <string>
+
+int main()
+{
+	std::map<string, int> m = { {"a", 1}, {"b", 2}, {"c", 3} };
+  
+  auto it = m.find("b");
+  if (it != end(m))
+  {
+     int value = it->second;
+     // ... do something with value
+  }
+}
+
+// Find the key-value pair corresponding to a certain key in a std::map.
+// 
+// On [8], we create a [`std::map`](cpp/container/map)
+// and initialise it with key-value pairs.
+// 
+// On [10], we get the iterator corresponding to the key "b", if any, 
+// by using [`find`](cpp/container/map/find) member function which 
+// finds an element with key equivalent to the given key ("b").
+// If such element is found, an Iterator to the element with key 
+// equivalent to "b" is returned, otherwise the [`past-the-end`](cpp/container/map/end) 
+// iterator is returned.
+// 
+// On [11], we check if find has returned a valid element. If so,
+// it is not equal to the past-the-end iterator.
+// 
+// On [13] we get the value corresponding to key "b".
+// Note that here a common anti-pattern it's often used, that is retrieving the
+// value by using m[key]. This will result in another lookup, causing
+// performance penalty.
+// 
+// Note: in C++14 it's possible to do even better, without constructing an instance of the
+// searched key. See [`find`](cpp/container/map/find) for more details.

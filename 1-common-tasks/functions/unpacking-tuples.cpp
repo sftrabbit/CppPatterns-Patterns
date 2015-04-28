@@ -1,47 +1,58 @@
-// Unpack a tuple to the parameters of a function
+// Apply tuple to a function
 // C++14
 
+#include <cstddef>
 #include <tuple>
+#include <type_traits>
 #include <utility>
 
-template<typename Tuple, typename F, size_t ...S >
-auto apply_tuple_impl(Tuple&& t, F&& fn, std::index_sequence<S...>)
+template<typename F, typename Tuple, size_t ...S >
+auto apply_tuple_impl(F&& fn, Tuple&& t, std::index_sequence<S...>)
 {
-  return std::forward<F>(fn)(std::get<S>(std::forward<Tuple>(t))...);
+	return std::forward<F>(fn)(std::get<S>(std::forward<Tuple>(t))...);
 }
 
-template<typename Tuple, typename F>
-auto apply_from_tuple(Tuple&& t, F&& fn)
+template<typename F, typename Tuple>
+auto apply_from_tuple(F&& fn, Tuple&& t)
 {
-  auto constexpr tSize = std::tuple_size<typename remove_reference<Tuple>::type>::value;
-  return apply_tuple_impl(std::forward<Tuple>(t), std::forward<F>(fn), std::make_index_sequence<tSize>());
+	std::size_t constexpr tSize
+		= std::tuple_size<typename std::remove_reference<Tuple>::type>::value;
+
+	return apply_tuple_impl(std::forward<F>(fn),
+	                        std::forward<Tuple>(t),
+	                        std::make_index_sequence<tSize>());
 }
 
 int do_sum(int a, int b) 
 {
-  return a + b;
+	return a + b;
 }
 
 int main()
 {
-  int sum = apply_from_tuple(std::make_tuple(10, 20), do_sum); // 30
+	int sum = apply_from_tuple(do_sum, std::make_tuple(10, 20));
 }
 
-// Unpack a tuple to the parameters of a function/callable object and call it
+// Unpack a tuple as the arguments of a function.
 // 
-// The `apply_from_tuple` function on [12-17] returns the
-// result of applying the function fn to the arguments stored
-// in the [`std::tuple`](cpp/utility/tuple) t.
-// On [15] we store the size of the tuple t in tSize.
-// On [16] we call `apply_tuple_impl` passing t, fn and an 
+// The `apply_from_tuple` function template on [15-24] returns the
+// result of applying the function `fn` to the values stored in the
+// [`std::tuple`](cpp/utility/tuple) `t`. On [18-19], we store the
+// size of `t` in `tSize`, which is declared `constexpr` because
+// its value can be determined at compile-time. On [21-23], we call
+// `apply_tuple_impl` passing `t`, `fn` and an 
 // [`std::index_sequence`](cpp/utility/integer_sequence) 
-// created from 0 to tSize.
-
-// `apply_tuple_impl` [6-10] returns the result of applying 
-// the function fn using all the elements of the tuple t as arguments (on [9]).
-// We apply [`std::get`](cpp/utility/tuple/get) to the tuple,
-// expanding the pack carried by the index_sequence. This way all the
-// elements of t are expanded and passed to the function.
+// which carries a parameter pack containing a sequence of integers
+// from `0` to `tSize - 1`.
 // 
-// Note: a standard [`apply`](cpp/experimental/apply) function has been proposed as a TS for
-// future standardization.
+// The `apply_tuple_impl` function template on [9-13] returns the
+// result of applying the function `fn` using event element of the
+// tuple `t` as arguments (on [12]). To do this, we expand the
+// parameter pack carried by the `std::index_sequence` and apply
+// [`std::get`](cpp/utility/tuple/get) to the tuple for each
+// integer in the sequence. This way, all the elements of `t` are
+// expanded and passed to the function.
+// 
+// **Note**: a [`std::apply`](cpp/experimental/apply) function has
+// been proposed as part of the Library Fundamentals TS for future
+// standardization.

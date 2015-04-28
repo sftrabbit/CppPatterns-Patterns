@@ -43,9 +43,5 @@ int main()
 // expanding the pack carried by the index_sequence. This way all the
 // elements of t are expanded and passed to the function.
 // 
-// Note (1): another way of writing `apply_from_tuple` is:
-// template<typename F, typename... T>
-// auto apply_from_tuple(std::tuple<T...> t, F&& fn)
-// {
-//   return apply_tuple_impl(t, std::forward<F>(fn), std::make_index_sequence<sizeof...(T)>());
-// }
+// Note: a standard [`apply`](cpp/experimental/apply) function has been proposed as a TS for
+// future standardization.

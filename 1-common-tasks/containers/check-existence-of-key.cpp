@@ -1,4 +1,4 @@
-// Check if a certain key is in a std::map
+// Check existence of a key
 // C++11
 
 #include <map>
@@ -6,25 +6,24 @@
 
 int main()
 {
-  std::map<string, int> m = { {"a", 1}, {"b", 2}, {"c", 3} };
+  std::map<string, int> m = {{"a", 1}, {"b", 2}, {"c", 3}};
   
   if (m.count("b"))
   {
-     // we know "b" is in m
+     // We know "b" is in m
   }
 }
 
-// Check if a certain key is in a std::map.
+// Check if a particular key is in an associative container.
 // 
-// On [8], we create a [`std::map`](cpp/container/map)
-// and initialise it with key-value pairs.
+// On [9], we create a [`std::map`](cpp/container/map) as an example
+// associative container and initialise it with key-value pairs.
 // 
-// On [10], we count the number of occurrences of the key "b" in m
+// On [11], we count the number of occurrences of the key "b" in m
 // by using the memeber function [`count`](cpp/container/map/count).
-// If "b" is in m, count will return 1, 0 otherwise.
-//  
-// Note: to reference the corresponding value don't use this idiom but
-// consider [getting an element by key in std::map](/common-tasks/map-get-value-by-key.html)
+// If "b" is in m, count will return 1; otherwise it will return 0.
 //
-// Note: in C++14 it's possible to do even better, without constructing an instance of the
-// searched key. See [`count`](cpp/container/map/count) for more details.
+// Note: in C++14, an instance of the searched key will not be created
+// if the container's comparator is
+// [transparent](http://stackoverflow.com/q/20317413/150634) and
+// supports the appropriate comparison without conversions.

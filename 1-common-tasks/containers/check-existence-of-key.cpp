@@ -20,7 +20,7 @@ int main()
 // associative container and initialize it with key-value pairs.
 // 
 // On [11], we count the number of occurrences of the key `"b"` in `m`
-// by using the memeber function [`count`](cpp/container/map/count).
+// by using the member function [`count`](cpp/container/map/count).
 // If `"b"` is in `m`, `count` will return 1; otherwise it will return
 // 0.
 //

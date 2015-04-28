@@ -38,8 +38,8 @@ int main()
 // The `apply_from_tuple` function template on [15-24] returns the
 // result of applying the function `fn` to the values stored in the
 // [`std::tuple`](cpp/utility/tuple) `t`. On [18-19], we store the
-// size of `t` in `tSize`, which is declared `constexpr` because
-// its value can be determined at compile-time. On [21-23], we call
+// size of `t` in `tSize`, which is declared `constexpr` so that
+// it can be evaluated at compile-time. On [21-23], we call
 // `apply_tuple_impl` passing `t`, `fn` and an 
 // [`std::index_sequence`](cpp/utility/integer_sequence) 
 // which carries a parameter pack containing a sequence of integers

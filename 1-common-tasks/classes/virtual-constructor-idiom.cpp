@@ -50,7 +50,7 @@ private:
 // In C++, you can't copy an object unless you know it's exact type.
 // This is because the compiler must know the amount of space it 
 // needs to allocate. Therefore we can't copy instances of derived 
-// classes through the pointer to base. If You we want to copy Foo, 
+// classes through the pointer to base. If we want to copy Foo, 
 // we need to implement a copy constructor that will initialize
 // Foo::basePtr [44]. Obviously we want it to be the same as original 
 // but how do we do that not knowing the type of the original?

@@ -9,9 +9,8 @@ class foo
 {
 public:
 	foo(const std::shared_ptr<bar>& b)
-	{
-		this->forward_reference = b;
-	}
+		: forward_reference{b}
+	{ }
 
 private:
 	std::shared_ptr<bar> forward_reference;
@@ -49,8 +48,8 @@ private:
 // `std::weak_ptr` can be converted to a `std::shared_ptr` to provide
 // temporary ownership and safe access to the object.
 //
-// In this sample, we have two classes: `foo` on [8-18], and `bar` on
-// [20-34]. A `foo` object has shared ownership of a `bar` ([17]), and
+// In this sample, we have two classes: `foo` on [8-17], and `bar` on
+// [19-33]. A `foo` object has shared ownership of a `bar` ([16]), and
 // `bar` requires some form of reference back to the `foo` that owns it.
 // If this back reference were a `std::shared_ptr<foo>`, it would introduce
 // a circular dependency, making it impossible for either object to be
@@ -58,11 +57,11 @@ private:
 // refering to a deleted object when it attempts to use it, as the
 // lifetime of `foo` is independent of `bar`.
 // 
-// The solution is to use a `std::weak_ptr<foo>`, as on [37]. When
+// The solution is to use a `std::weak_ptr<foo>`, as on [36]. When
 // `bar` needs to use `foo`, it checks if bar still exists by calling
 // `lock` on the `std::weak_ptr` to take temporary shared ownership
-// ([30]). If the returned `std::shared_ptr` is not empty, `bar` can
-// safely use it to access the `foo` object ([31-33]).
+// ([29]). If the returned `std::shared_ptr` is not empty, `bar` can
+// safely use it to access the `foo` object ([30-32]).
 
 int main()
 {

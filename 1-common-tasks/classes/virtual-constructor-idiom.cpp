@@ -1,86 +1,65 @@
-// Virtual constructor idiom
+// Virtual constructor
 // C++11
 
 #include <memory>
 
-class IBase
+class Base
 {
 public:
-	virtual ~IBase() {}
+	virtual ~Base() {}
 
-	virtual IBase* clone() const = 0;
+	virtual Base* clone() const = 0;
 };
 
-class Derived1 : public IBase
+class Derived : public Base
 {
 public:
-	IBase* clone() const override
+	Derived* clone() const override
 	{
-		return new Derived1(*this);
+		return new Derived(*this);
 	}
 };
 
-class Derived2 : public IBase
+void foo(std::unique_ptr<Base> original)
 {
-public:
-	IBase* clone() const override
-	{
-		return new Derived2(*this);
-	}
-};
+	std::unique_ptr<Base> copy{original->clone()};
+}
 
-class Foo
-{
-public:
-	Foo() 
-		: basePtr(new Derived1())
-	{}
-
-	Foo(const Foo& other) 
-		: basePtr(other.basePtr->clone())
-	{}
-
-private:
-	std::unique_ptr<IBase> basePtr;
-};
-
-
-// To create a copy of an object without knowing its concrete type.
+// Create a copy of an object through a pointer to its base type.
 //
-// In C++, you can't copy an object unless you know it's exact type.
-// This is because the compiler must know the amount of space it 
-// needs to allocate. Therefore we can't copy instances of derived 
-// classes through the pointer to base. If we want to copy Foo, 
-// we need to implement a copy constructor that will initialize
-// Foo::basePtr [44]. Obviously we want it to be the same as original 
-// but how do we do that not knowing the type of the original?
+// You can't copy an object unless you know its static type, because
+// the compiler must know the amount of space it needs to allocate.
+// Therefore we can't copy an object of derived type directly through
+// a pointer to its base.
 //
-// The answer is to use the "virtual constructor idiom" which allows 
-// to "Create a copy of an object without knowing it's concrete type" 
-// The "trick" is to declare a method in the base class that each of 
-// the derived classes will implement to return a copy of itself.
-// Let's call it "clone()" [11] (Note that it's a pure-virtual method 
-// which forces every derived class to implement it.)
-// Each of the derived classes now implements clone() by simply 
-// returning a copy of itself. [19] [28]
-// The type of '*this' in this case is 'const Class&' (a reference to
-// const) so Class(*this) calls a copy constructor.
-// (Note, that the clone() method might not be marked const in which 
-// case *this returns a non-const reference. Proper copy constructor 
-// is still called, but it's a good habit to mark methods that don't 
-// modify the class with 'const')
+// The virtual constructor idiom is a technique for delegating the
+// act of copying the object to the derived class through the use of
+// virtual functions. To demonstrate, we declare a virtual member
+// function of `Base` on [11] (typically named `clone`) that each of
+// the derived classes will implement to return a copy of themselves.
+// The `Derived` class implements this `clone` function on [17-20], 
+// simply by creating a copy of itself and returning it.
 //
-// Now, if we want to properly copy Foo::basePtr, in the Foo's copy 
-// constructor [39-41] we just call IBase->clone() [40] which thanks 
-// to polymorphism returns a pointer that points to a copy of the 
-// original derived instance.
+// Now, consider that we are given a `std::unique_ptr<Base>` on [23]
+// pointing to an object of derived type that we wish to copy (this
+// could alternatively be a `Base*` or any other smart pointer to
+// `Base`). To perform this copy, we simply call the virtual `clone`
+// member function through the pointer on [25], which thanks to
+// polymorphism calls the `Derived` implementation of `clone`,
+// returning a pointer that points to a copy of the original derived
+// object.
 // 
-// Note that this idiom is most usefull when derived classes have 
-// some state, which in this example, for the sake of simplicity, 
-// is omitted.
+// **Note**: It is not possible to implement the virtual constructor
+// idiom as-is with smart pointers, as derived virtual member
+// functions must have covariant return types. One workaround
+// is for `Derived::clone` to return a `Base` pointer instead.
+// Alternatively, you can provide non-virtual [wrapper
+// functions](http://stackoverflow.com/a/6925201/150634).
+
+#include <utility>
 
 int main()
 {
-	Foo f1;
-	Foo f2(f1);
+	std::unique_ptr<Base> p = std::make_unique<Derived>();
+	foo(std::move(p));	
 }

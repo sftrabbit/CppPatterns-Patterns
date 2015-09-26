@@ -24,7 +24,7 @@ class bar
 // using existing types that support the appropriate copy/move
 // semantics.
 // 
-// The class `foo` on [5-10], for example, does not perform any
+// The class `foo` on [6-11], for example, does not perform any
 // manual memory management, yet correctly supports copies and
 // moves without any memory leaks. The defaulted copy/move
 // constructors and assignment operators will simply copy or move

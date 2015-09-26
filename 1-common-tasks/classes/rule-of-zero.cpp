@@ -24,15 +24,15 @@ class bar
 // using existing types that support the appropriate copy/move
 // semantics.
 // 
-// The class `foo` on [5-10], for example, does not perform any
+// The class `foo` on [6-11], for example, does not perform any
 // manual memory management, yet correctly supports copies and
 // moves without any memory leaks. The defaulted copy/move
 // constructors and assignment operators will simply copy or move
 // each member. For the `int` `x` ([9]), this will copy its value.
-// For `v`, which is a [`std::vector`](cpp/container/vector),
+// For `v` ([10]), which is a [`std::vector`](cpp/container/vector),
 // all of its elements will be copied over.
 // 
-// The class `bar` on [12-16] is not copyable by default because it
+// The class `bar` on [13-17] is not copyable by default because it
 // has a [`std::unique_ptr`](cpp/memory/unique_ptr) member which
 // itself is not copyable. However, it correctly supports move
 // operations, which will transfer ownership of the dynamically

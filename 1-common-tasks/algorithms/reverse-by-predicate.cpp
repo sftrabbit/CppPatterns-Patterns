@@ -51,9 +51,9 @@ void reverse_by_predicate(I begin, I end, P pred)
     //requires BidirectionalIterator<I> && Predicate<P, ValueType<I>>
 {
     while (begin != end) {
-        end = std::rotate(begin, std::find_if(begin + 1, end, pred), end);
+        end = std::rotate(begin, std::find_if(begin, end, pred), end);
         if (begin == end) { return; }
-        end = std::rotate(begin, std::find_if_not(begin + 1, end, pred), end);
+        end = std::rotate(begin, std::find_if_not(begin, end, pred), end);
     }
 }
 

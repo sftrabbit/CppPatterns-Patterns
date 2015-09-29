@@ -38,9 +38,7 @@ void reverse_by_predicate(I begin, I end, P pred)
 //
 //
 // *Note*:  This can become more flexible if we allow our predicate to return
-// any value, and split on non-equal evaluations.  This is left as an exercise
-// for the reader!
-//
+// any value, and split on non-equal evaluations.  This is left as an exercise.
 
 #include <algorithm>
 #include <iostream>

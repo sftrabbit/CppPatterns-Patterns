@@ -4,16 +4,16 @@
 #include <algorithm>
 #include <iterator>
 
-template <typename I, typename C>
-    //requires BidirectionalIterator<I> && LessThanComparable<ValueType<I>, C>
-bool my_next_permutation(I begin, I end, C comp)
+template <typename I>
+    //requires BidirectionalIterator<I> && LessThanComparable<ValueType<I>>
+bool my_next_permutation(I begin, I end)
 {
     const auto rbeg = std::make_reverse_iterator(end);
     const auto rend = std::make_reverse_iterator(begin);
-    auto pivot = std::is_sorted_until(rbeg, rend, comp);
+    auto pivot = std::is_sorted_until(rbeg, rend);
     bool had_greater_permutation{false};
     if (pivot != rend) {
-        std::iter_swap(pivot, std::upper_bound(rbeg, pivot, *pivot, comp));
+        std::iter_swap(pivot, std::upper_bound(rbeg, pivot, *pivot));
         had_greater_permutation = true;
     }
     std::reverse(rbeg, pivot);

@@ -24,8 +24,8 @@ void reverse_by_predicate(I begin, I end, P pred)
 //
 // Thus by setting our `end` to this return value, we remove it from the blocks
 // of text left to reverse.  Finally, we know that the next block of text we
-// are to reverse will be the logical negation (`if -> if_not, if_not -> if`)
-// of our previous search; hence the alternating rotation points.
+// are to reverse will be the logical negation (`if -> if_not`, `if_not -> if`)
+// of our previous search; hence the alternating pivot points.
 //
 // In more mathematical terms:
 //
@@ -37,8 +37,9 @@ void reverse_by_predicate(I begin, I end, P pred)
 //   its own `H + T` pair.
 //
 //
-// *Note*:  This can become more flexible if we allow our predicate to return
-// any value, and split on non-equal evaluations.  This is left as an exercise.
+// *Note*: This algorithm can become more flexible if we allow our predicate to
+// return any value, and split on non-equal pivot evaluations. This is left as
+// an exercise.
 
 #include <algorithm>
 #include <iostream>

@@ -25,5 +25,7 @@ bool my_next_permutation(I begin, I end)
 // ![flow chart of algorithm][1]  
 // *Borrowed from [http://www.nayuki.io/][2]*
 //
+// `std::prev_permutation` is left as an exercise.
+//
 // [1]: http://www.nayuki.io/res/next-lexicographical-permutation-algorithm/next-permutation-algorithm-thumb.png
 // [2]: http://www.nayuki.io/page/next-lexicographical-permutation-algorithm

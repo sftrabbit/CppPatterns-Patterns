@@ -4,7 +4,7 @@
 #include <algorithm>
 
 template <typename I, typename P>
-void reverse_by_predicate(I begin, I end, P pred)
+void reverse_by(I begin, I end, P pred)
     //requires BidirectionalIterator<I> && Predicate<P, ValueType<I>>
 {
     while (begin != end) {
@@ -46,7 +46,7 @@ void reverse_by_predicate(I begin, I end, P pred)
 #include <string>
 
 template <typename I, typename P>
-void reverse_by_predicate(I begin, I end, P pred)
+void reverse_by(I begin, I end, P pred)
     //requires BidirectionalIterator<I> && Predicate<P, ValueType<I>>
 {
     while (begin != end) {
@@ -60,7 +60,7 @@ int main()
 {
     std::string str{ "mary had a little lamb whose fleece was white as snow" };
     std::cout << '"' << str << '"' << std::endl;
-    reverse_by_predicate(str.begin(), str.end(), ::isspace);
+    reverse_by(str.begin(), str.end(), ::isspace);
     std::cout << '"' << str << '"' << std::endl;
     // `str` is now: "snow as white was fleece whose lamb little a had mary"
 }

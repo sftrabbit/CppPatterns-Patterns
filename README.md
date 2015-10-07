@@ -134,7 +134,7 @@ There are a few simple guidelines:
 -   Avoid using `auto` for two reasons: firstly, the samples are
     intended to be used as a reference for beginner C++ developers,
     and the types involved are important to help with their
-    understanding; secondly, a concensus has not been reached on when
+    understanding; secondly, a consensus has not been reached on when
     it is appropriate to use `auto`.
 
 -   Use the uniform initialisation syntax where possible.

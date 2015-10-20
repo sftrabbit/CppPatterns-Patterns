@@ -36,6 +36,17 @@ class subject
 		std::vector<std::reference_wrapper<observer>> observers;
 };
 
+int main()
+{
+	subject s;
+
+	observer_concrete o1, o2;
+	s.register_observer(o1);
+	s.register_observer(o2);
+
+	s.notify_observers();
+}
+
 // Notify generic observer objects when an event occurs.
 // 
 // The observer pattern allows generic observer objects to be
@@ -55,13 +66,3 @@ class subject
 // containers require the element type to be assignable, which normal
 // reference types are not.
 
-int main()
-{
-	subject s;
-
-	observer_concrete o1, o2;
-	s.register_observer(o1);
-	s.register_observer(o2);
-
-	s.notify_observers();
-}

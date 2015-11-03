@@ -58,9 +58,8 @@ void reverse_by(I begin, I end, P pred)
 
 int main()
 {
-    std::string str{ "mary had a little lamb whose fleece was white as snow" };
-    std::cout << '"' << str << '"' << std::endl;
+    std::string str{"mary had a little lamb whose fleece was white as snow"};
+    std::cout << str << std::endl;
     reverse_by(str.begin(), str.end(), ::isspace);
-    std::cout << '"' << str << '"' << std::endl;
-    // `str` is now: "snow as white was fleece whose lamb little a had mary"
+    std::cout << str << std::endl; // "snow as white was fleece whose lamb little a had mary"
 }

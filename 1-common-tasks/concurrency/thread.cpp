@@ -2,50 +2,58 @@
 // C++11
 
 #include <thread>
+#include <string>
+#include <functional>
 
-void func()
-{
-	// body
-}
+void func(std::string str, int& x);
+void do_something();
 
 int main()
 {
-	std::thread t{func};
+	std::string str = "Test";
+	int x = 5;
+
+	std::thread t{func, str, std::ref(x)};
 	
-	// ...
+	do_something();
 	
 	t.join();
 }
 
-// Create a thread.
+// Execute code on a separate thread.
 // 
-// On [9], we create a [`std::thread`](cpp/thread/thread) object `t`,
-// which represents an operating system thread (whatever that may mean
-// for the operating system it is running on).
+// On [16], we create a [`std::thread`](cpp/thread/thread) object `t`,
+// which represents a thread of execution. When constructing `t`, we
+// pass `func` as the function to execute on that thread.
+//
+// To pass arguments to `func`, we have passed them as additional
+// arguments to `std::thread`'s constructor. Notice that to pass an
+// argument by reference, it must be wrapped in a
+// [`std::reference_wrapper`](cpp/utility/functional/reference_wrapper)
+// &mdash; to do this, we use the [`std::ref`](cpp/utility/functional/ref)
+// helper function. For `const` references, use
+// [`std::cref`](cpp/utility/functional/cref).
 // 
-// A default-constructed `std::thread` object is empty - it does
-// nothing useful. So when constructing `t`, we pass a reference to
-// function `func`.
+// After creating the thread, the remainder of `main` continues to
+// execute as normal. At the same time, function `func` begins
+// executing in the newly-created thread. This means that the bodies
+// of `func` and `main` will be executing concurrently. They may be
+// executed in parallel if the system supports parallel execution.
 // 
-// After creating the thread, the constructor returns immediately, and
-// the remainder of `main` continues to execute in the original
-// thread. At the same time (more or less, depending on system
-// scheduling), function `func` begins executing in the newly-created
-// thread. This means that, in theory, the body of `func` ([8]) and
-// the code in `main` ([14-16]) will be executing at the same time, in
-// parallel. (In reality, there are situations where this might not
-// happen, such as if the system does not support parallel execution.)
-// 
-// A thread that is not empty (that is, one that is not created with
-// the default `std::thread` constructor, or moved-from) must be
-// either detached or joined before destruction, or
-// [`std::terminate()`](cpp/error/terminate) will be called. Joining
-// is more common (detaching is dangerous), so on [17] we call `t`'s
-// [`join()`](cpp/thread/thread/join) function. This causes the
-// original thread (the one `main` is running in) to block until `t`'s
-// thread function (which is `func`) returns. (`func` must not let an
-// exception propagate out of its body, or `std::terminate` will be
-// called.)
-// 
-// Once `join()` returns, `t` is empty - the thread it represented is
-// gone - and control continues once more in the original thread.
+// On [20] we call `t`'s [`join`](cpp/thread/thread/join) member
+// function. This causes `main`'s thread to block until the thread
+// finishes execution (which is when `func` returns). Once `join`
+// returns, execution continues in `main`'s thread.
+//
+// **Note**: A thread must be either joined or detached before
+// destruction, or [`std::terminate`](cpp/error/terminate) will be
+// called.
+//
+// **Note**: If `func` propagates an exception, `std::terminate` will
+// be called.
+
+void func(std::string, int&)
+{ }
+
+void do_something()
+{ }

@@ -15,3 +15,4 @@
 - Michael B. Price <michael.b.price.dev@gmail.com> (michaelbprice)
 - Alejandro Mallea <janoma@gmail.com> (janoma)
 - Mehdi Amini (joker-eph)
+- Jatin Dhankhar <jatin@jatindhankhar.in> (jatindhankhar)

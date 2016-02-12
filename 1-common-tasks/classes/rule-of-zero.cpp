@@ -44,5 +44,5 @@ int main()
 	foo f2 = f1;
 
 	bar b1;
-	bar b2 = std::move(b2);
+	bar b2 = std::move(b1);
 }

@@ -6,15 +6,15 @@
 
 int main()
 {
-  std::ifstream file{"file.txt"};
-  if (file)
-  {
-    std::ostringstream ss{};
-    if (ss << file.rdbuf())
-    {
-      std::string str = ss.str();
-    }
-  }
+	std::ifstream file{"file.txt"};
+	if (file)
+	{
+		std::ostringstream ss{};
+		if (ss << file.rdbuf())
+		{
+			std::string str = ss.str();
+		}
+	}
 }
 
 // Read an entire text file into a string.

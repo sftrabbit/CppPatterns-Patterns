@@ -6,18 +6,18 @@
 
 int main()
 {
-  std::ifstream file{"file.dat", std::ios_base::in | std::ios_base::binary};
-  if (file &&
-      file.ignore(std::numeric_limits<std::streamsize>::max()))
-  {
-    std::streamsize size = file.gcount();
-    file.seekg(0);
-    
-    std::vector<unsigned char> buffer{};
-    buffer.resize(size);
-    
-    file.read(reinterpret_cast<char*>(buffer.data()), buffer.size());
-  }
+	std::ifstream file{"file.dat", std::ios_base::in | std::ios_base::binary};
+	if (file &&
+	    file.ignore(std::numeric_limits<std::streamsize>::max()))
+	{
+		std::streamsize size = file.gcount();
+		file.seekg(0);
+
+		std::vector<unsigned char> buffer{};
+		buffer.resize(size);
+
+		file.read(reinterpret_cast<char*>(buffer.data()), buffer.size());
+	}
 }
 
 // Read an entire binary file into a byte array.

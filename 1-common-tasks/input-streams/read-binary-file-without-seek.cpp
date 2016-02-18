@@ -7,22 +7,22 @@
 
 int main()
 {
-  using std::begin;
-  using std::end;
-  
-  std::ifstream file{"file.dat", std::ios_base::in | std::ios_base::binary};
-  if (file)
-  {
-    std::deque<unsigned char> buffer{};
-    
-    std::array<unsigned char, BUFSIZ> chunk{};
-    
-    while (file.read(reinterpret_cast<char*>(chunk.data()), chunk.size()) ||
-           file.gcount())
-    {
-      buffer.insert(end(buffer), begin(chunk), begin(chunk) + file.gcount());
-    }
-  }
+	using std::begin;
+	using std::end;
+	
+	std::ifstream file{"file.dat", std::ios_base::in | std::ios_base::binary};
+	if (file)
+	{
+		std::deque<unsigned char> buffer{};
+		
+		std::array<unsigned char, BUFSIZ> chunk{};
+		
+		while (file.read(reinterpret_cast<char*>(chunk.data()), chunk.size()) ||
+		       file.gcount())
+		{
+			buffer.insert(end(buffer), begin(chunk), begin(chunk) + file.gcount());
+		}
+	}
 }
 
 // Read an entire binary file into a byte array without seeking.

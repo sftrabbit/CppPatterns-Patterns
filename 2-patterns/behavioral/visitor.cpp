@@ -49,6 +49,19 @@ class element_concrete_2 : public element
 		}
 };
 
+int main()
+{
+	element_concrete_1 x;
+	element_concrete_2 y;
+
+	element& el1 = x;
+	element& el2 = y;
+
+	visitor_concrete v;
+	el1.accept(v);
+	el2.accept(v);
+};
+
 // Separate generic algorithms from the elements or structure on which
 // they operate.
 // 
@@ -77,15 +90,3 @@ class element_concrete_2 : public element
 // part of a larger structure, in which case the `accept` function can
 // call itself recursively down the structure.
  
-int main()
-{
-	element_concrete_1 x;
-	element_concrete_2 y;
-
-	element& el1 = x;
-	element& el2 = y;
-	
-	visitor_concrete v;
-	el1.accept(v);
-	el2.accept(v);
-};

@@ -22,10 +22,10 @@ void foo(RangeOfInts source)
 }
 
 // Copy elements from a range to another range or container.
-// 
+//
 // We start with a `source` range object on [12] and, for the purposes
 // of this example, we assume its elements are of type `int`.
-// 
+//
 // On [14-15], we copy the elements from the `source` range into a
 // container, `target1`, simply by passing the begin and end iterators
 // of the range to the `std::vector<T>`'s constructor. We use

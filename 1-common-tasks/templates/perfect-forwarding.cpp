@@ -12,13 +12,13 @@ std::pair<T, U> make_pair_wrapper(T&& t, U&& u)
 
 // Forward arguments of one function to another as though the wrapped
 // function had been called directly.
-// 
+//
 // Perfect forwarding allows us to preserve an argument's value
 // category (lvalue/rvalue) and `const`/`volatile` modifiers. Perfect
 // forwarding is performed in two steps: receive a *forwarding
 // reference* (also known as *universal reference*), then forward it
 // using [`std::forward`](cpp/utility/forward).
-// 
+//
 // In our example, the arguments `t` and `u` on [7] are forwarding
 // references because they are declared in the form `X&&` where `X`
 // is a template parameter. We use `std::forward` on [9-10] to forward

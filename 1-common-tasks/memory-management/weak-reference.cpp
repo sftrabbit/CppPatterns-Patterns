@@ -56,7 +56,7 @@ private:
 // destroyed. If it were a normal reference type (`foo&`), it risks
 // refering to a deleted object when it attempts to use it, as the
 // lifetime of `foo` is independent of `bar`.
-// 
+//
 // The solution is to use a `std::weak_ptr<foo>`, as on [36]. When
 // `bar` needs to use `foo`, it checks if bar still exists by calling
 // `lock` on the `std::weak_ptr` to take temporary shared ownership

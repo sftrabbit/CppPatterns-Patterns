@@ -21,9 +21,9 @@ typename std::enable_if<std::is_floating_point<T>::value, bool>::type
 
 // Conditionally instantiate a function template depending on the
 // template arguments.
-// 
+//
 // We provide two implementations of the `equal` function template:
-// 
+//
 // 1. The template on [8-13] will only be instantiated when `T` is an
 //    integral type.
 // 2. The template on [15-20] will only be instantiated when `T` is a
@@ -37,7 +37,7 @@ typename std::enable_if<std::is_floating_point<T>::value, bool>::type
 // failing to instantiate a template with some particular
 // template arguments does not result in an error and simply discards
 // that instantiation.
-// 
+//
 // The second template argument of `std::enable_if` &mdash; in this case,
 // `bool` &mdash; is what the full `std::enable_if<...>::type`
 // evaluates to when the first template argument is `true`. This means

@@ -48,23 +48,23 @@ class foo
 };
 
 // Implement the assignment operator with strong exception safety.
-// 
+//
 // The copy-and-swap idiom identifies that we can implement a
 // classes copy/move assignment operators in terms of its
 // copy/move constructor and achieve strong exception safety.
-// 
+//
 // The class `foo`, on [10-48], has an implementation similar to the
 // [rule of five](/common-tasks/rule-of-five.html), yet its copy and
 // move assignment operators have been replaced with a single
 // assignment operator on [27-32]. This assignment operator takes its
 // argument by value, making use of the existing copy and move
 // constructor implementations.
-// 
+//
 // To implement the assignment operator, we simply need to swap the
 // contents of `*this` and the argument, `other`. When `other` goes
 // out of scope at the end of the function, it will destroy any
 // resources that were originally associated with the current object.
-// 
+//
 // To achieve this, we define a `swap` function for our class on
 // [39-44], which itself calls `swap` on the class's members ([43]).
 // We use a using-declaration on [41] to allow `swap` to be found
@@ -73,13 +73,13 @@ class foo
 // in our case, because we are only swapping a pointer, but is good
 // practice in general. Our assignment operator then simply swaps
 // `*this` with `other` on [29].
-// 
+//
 // The copy-and-swap idiom has inherent strong exception safety
 // because all allocations (if any) occur when copying into the
 // `other` argument, before any changes have been made to `*this`.
 // It is generally, however, less optimized than a more custom
 // implementation of the assignment operators.
-// 
+//
 // **Note**: We can typically avoid manual memory management and
 // having to write the copy/move constructors, assignment operators,
 // and destructor entirely by using the

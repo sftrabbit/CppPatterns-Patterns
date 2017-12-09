@@ -22,16 +22,16 @@ class foo
 };
 
 // Implement a lexicographic ordering over class members.
-// 
+//
 // The class `foo`, on [6-22], has three member variables `n`, `c` and
 // `d` declared on [19-21]. We wish to implement an ordering relation
 // for `foo` where these members are compared lexicographically.
-// 
+//
 // Getting an ordering relation right with 3 elements or more is
 // tedious and error-prone. Fortunately, the standard library
 // provides a lexicographic ordering over
 // [`std::tuple`](cpp/utility/tuple), which we can utilise.
-// 
+//
 // The less-than operator for `foo` defined on [13-17] compares the
 // member `n` first, then `c` if the `n`s are equal, and finally the
 // member `d` if both the `n`s and `c`s are equal. To achieve this,

@@ -14,10 +14,10 @@ int main()
 }
 
 // Align data in columns when writing to an output stream.
-// 
+//
 // On [8-13], we write two lines of data to an output stream.
 // [`std::cout`](cpp/io/cout) is used as the example stream.
-// 
+//
 // We use I/O manipulators to align the data in columns. The
 // [`std::setw`](cpp/io/manip/setw) manipulator sets the
 // width of a column, while [`std::left`](cpp/io/manip/left) and

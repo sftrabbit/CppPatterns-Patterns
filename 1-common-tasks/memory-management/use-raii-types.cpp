@@ -16,17 +16,17 @@ int main()
 
 // Avoid manual memory management to improve safety and reduce bugs
 // and memory leaks.
-// 
+//
 // Every object created on [10-14] will internally manage some
 // dynamically allocated memory (allocated with the `new` keyword).
 // They are all, however, implemented such that they deallocate that
 // memory when they are destroyed. This practice is known as RAII.
-// 
+//
 // The user of these classes does not need to perform manual memory
 // management, reducing the risk of memory leaks and other bugs. In
 // fact, the use of `new` and `delete` can be avoided entirely by
 // using these RAII types.
-// 
+//
 // Likewise, it is good practice to ensure your own classes also
 // implement the RAII idiom with the
 // [rule of five](/common-tasks/rule-of-five.html)

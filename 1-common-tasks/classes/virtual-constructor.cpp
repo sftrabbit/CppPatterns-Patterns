@@ -37,7 +37,7 @@ void foo(std::unique_ptr<Base> original)
 // virtual functions. To demonstrate, we declare a virtual member
 // function of `Base` on [11] (typically named `clone`) that each of
 // the derived classes will implement to return a copy of themselves.
-// The `Derived` class implements this `clone` function on [17-20], 
+// The `Derived` class implements this `clone` function on [17-20],
 // simply by creating a copy of itself and returning it.
 //
 // Now, consider that we are given a `std::unique_ptr<Base>` on [23]
@@ -48,7 +48,7 @@ void foo(std::unique_ptr<Base> original)
 // polymorphism calls the `Derived` implementation of `clone`,
 // returning a pointer that points to a copy of the original derived
 // object.
-// 
+//
 // **Note**: It is not possible to implement the virtual constructor
 // idiom as-is with smart pointers, as derived virtual member
 // functions must have covariant return types. One workaround
@@ -61,5 +61,5 @@ void foo(std::unique_ptr<Base> original)
 int main()
 {
 	std::unique_ptr<Base> p = std::make_unique<Derived>();
-	foo(std::move(p));	
+	foo(std::move(p));
 }

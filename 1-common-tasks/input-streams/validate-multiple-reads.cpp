@@ -22,14 +22,14 @@ int main()
 
 // Ensure that multiple stream reads are successful before using the
 // extracted values.
-// 
+//
 // We create a [`std::istringstream`](cpp/io/basic_istringstream) as
 // the example input stream, which contains some values that we wish
 // to read ([8-10]). This stream could be replaced by any other
 // input stream, such as [`std::cin`](cpp/io/cin) or a file stream.
-// We then create some objects on [12-15] into which we will read 
+// We then create some objects on [12-15] into which we will read
 // values from the stream.
-// 
+//
 // In the condition of the `if` statement on [17-20], we first perform
 // an unformatted extraction with
 // [`std::getline`](cpp/string/basic_string/getline) ([17])
@@ -38,7 +38,7 @@ int main()
 // succeed. Short-circuiting also ensures that the second set of
 // extractions are only attempted if the previous extraction was
 // successful.
-// 
+//
 // If you are reading values on multiple lines, consider [reading
 // from the stream line-by-line](/common-tasks/read-line-by-line.html)
 // and then parsing each line.

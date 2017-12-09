@@ -47,21 +47,21 @@ foo& foo::operator=(foo&&) = default;
 
 // Remove compilation dependencies on internal class implementations
 // and improve compile times.
-// 
+//
 // When a header file changes, any files that `#include` that file
 // will need to be recompiled. In the case of a class header, this
 // is true even if those changes only apply to private members of the
 // class. The PIMPL idiom hides private members from any users of
 // the header file, allowing these internal details to change without
 // requiring recompilation of the client code.
-// 
+//
 // [!8-20] define a class, `foo`, to which we have applied the PIMPL
 // idiom. This class definition includes only the public interface
 // of the class and a pointer to the internal implementation. We use
 // a [`std::unique_ptr`](cpp/memory/unique_ptr) ([19]) to ensure
 // the lifetime of the implementation is managed correctly, which we
 // initialise in `foo`s constructor ([38]).
-// 
+//
 // While the internal implementation class, `impl`, is declared in
 // the header file on [18], its definition appears in the
 // implementation file on [25-35]. This allows the class definition
@@ -74,7 +74,7 @@ foo& foo::operator=(foo&&) = default;
 // the move constructor and assignment operator on [45-46] so that
 // `foo` can be moved. To make `foo` copyable, we must also
 // implement the copy constructor and assignment operator.
-// 
+//
 // **Note**: `std::make_unique` was introduced in C++14. For C++11,
 // you can [roll your own implementation](http://stackoverflow.com/a/17902439/150634).
 

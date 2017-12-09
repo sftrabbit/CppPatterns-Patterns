@@ -7,7 +7,7 @@
 int main()
 {
 	std::map<std::string, int> m = {{"a", 1}, {"b", 2}, {"c", 3}};
-	
+
 	if (m.count("b"))
 	{
 		// We know "b" is in m
@@ -15,10 +15,10 @@ int main()
 }
 
 // Check if a particular key is in an associative container.
-// 
+//
 // On [9], we create a [`std::map`](cpp/container/map) as an example
 // associative container and initialize it with key-value pairs.
-// 
+//
 // On [11], we count the number of occurrences of the key `"b"` in `m`
 // by using the member function [`count`](cpp/container/map/count).
 // If `"b"` is in `m`, `count` will return 1; otherwise it will return

@@ -15,7 +15,7 @@ int main()
 }
 
 // Block the execution of a thread for a given amount of time.
-// 
+//
 // On [10], we create a [`std::chrono::milliseconds`](cpp/chrono/duration)
 // object representing the number of milliseconds to sleep (other
 // duration units may also be used). On [11], the call to

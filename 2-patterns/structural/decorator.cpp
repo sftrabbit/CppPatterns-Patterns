@@ -45,16 +45,16 @@ int main()
 }
 
 // Extend the functionality of a class.
-// 
+//
 // On [9-14], we define the class that we wish to decorate,
 // `foo_concrete`, which implements the `foo` interface.
-// 
+//
 // The `foo_decorator` class, on [16-31], also implements the
 // `foo` interface. This decorator class wraps any other `foo`
 // object, and forwarding any calls to the wrapped object. By adding
 // additional code to `foo_decorator::do_work` ([23-27]), we can
 // extend the functionality of the wrapped object.
-// 
+//
 // To demonstrate, we wrap a `foo_concrete` with a `foo_decorator` on
 // [40-41], and pass it to the `bar` function on [43], which takes a
 // reference to any `foo` object and calls `do_work` on it. In this

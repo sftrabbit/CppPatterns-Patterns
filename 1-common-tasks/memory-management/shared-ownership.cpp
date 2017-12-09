@@ -17,7 +17,7 @@ int main()
 
 // Share ownership of a dynamically allocated object with another
 // unit of code.
-// 
+//
 // On [14], we create a [`std::shared_ptr`](cpp/memory/shared_ptr)
 // which has ownership of a dynamically allocated `foo` object
 // (allocated with the [`std::make_shared`](cpp/memory/shared_ptr/make_shared)
@@ -26,6 +26,6 @@ int main()
 // to the same `foo` object. When ownership of an object is shared, it
 // will only be destroyed when all `std::shared_ptr`s owning it are
 // destroyed.
-// 
+//
 // In other cases, you may instead wish to [transfer unique ownership
 // of an object](/common-tasks/unique-ownership.html).

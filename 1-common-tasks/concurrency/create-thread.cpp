@@ -14,14 +14,14 @@ int main()
 	int x = 5;
 
 	std::thread t{func, str, std::ref(x)};
-	
+
 	do_something();
-	
+
 	t.join();
 }
 
 // Execute code on a separate thread.
-// 
+//
 // On [16], we create a [`std::thread`](cpp/thread/thread) object `t`,
 // which represents a thread of execution. When constructing `t`, we
 // pass `func` as the function to execute on that thread.
@@ -33,13 +33,13 @@ int main()
 // &mdash; to do this, we use the [`std::ref`](cpp/utility/functional/ref)
 // helper function. For `const` references, use
 // [`std::cref`](cpp/utility/functional/cref).
-// 
+//
 // After creating the thread, the remainder of `main` continues to
 // execute as normal. At the same time, function `func` begins
 // executing in the newly-created thread. This means that the bodies
 // of `func` and `main` will be executing concurrently. They may be
 // executed in parallel if the system supports parallel execution.
-// 
+//
 // On [20] we call `t`'s [`join`](cpp/thread/thread/join) member
 // function. This causes `main`'s thread to block until the thread
 // finishes execution (which is when `func` returns). Once `join`

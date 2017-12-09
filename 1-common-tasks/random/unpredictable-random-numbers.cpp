@@ -20,7 +20,7 @@ int main() {
 // an engine with a greater amount of random seed data, we increase
 // the number of possible states and therefore the unpredicitability
 // of the engine.
-// 
+//
 // On [7], we create a `std::random_device` as a source of
 // non-deterministic random numbers (if such a source is available).
 // On [8], we initialise a [`std::seed_seq`](cpp/numeric/random/seed_seq)
@@ -32,10 +32,10 @@ int main() {
 // Providing more initial seeds will increase the unpredictability of
 // the engine by increasing the number of possible seed sequences that
 // might be generated.
-// 
+//
 // While a `std::seed_seq` can be used to initialize multiple random
 // number engines, bear in mind that a particular `std::seed_seq` will
 // produce the same sequence of seeds each time it is used.
-// 
+//
 // **Note**: An unpredictable random number engine is not necessarily
 // cryptographically secure.

@@ -1,0 +1,80 @@
+categories:
+- title: Common Tasks
+  sections:
+  - title: Algorithms
+    samples:
+    - 1-common-tasks/algorithms/copy-range-of-elements
+    - 1-common-tasks/algorithms/count-values-in-range
+    - 1-common-tasks/algorithms/sort-range-of-elements
+    - 1-common-tasks/algorithms/swap-containers
+    - 1-common-tasks/algorithms/swap-values
+  - title: Classes
+    samples:
+    - 1-common-tasks/classes/copy-and-swap
+    - 1-common-tasks/classes/delegate-behavior-to-derived-classes
+    - 1-common-tasks/classes/lexicographic-ordering
+    - 1-common-tasks/classes/non-member-interfaces
+    - 1-common-tasks/classes/pimpl
+    - 1-common-tasks/classes/rule-of-five
+    - 1-common-tasks/classes/rule-of-zero
+    - 1-common-tasks/classes/virtual-constructor
+  - title: Concurrency
+    samples:
+    - 1-common-tasks/concurrency/create-thread
+    - 1-common-tasks/concurrency/execute-task-asynchronously
+    - 1-common-tasks/concurrency/pass-values-between-threads
+  - title: Containers
+    samples:
+    - 1-common-tasks/containers/check-existence-of-key
+    - 1-common-tasks/containers/remove-elements-from-container
+  - title: Functions
+    samples:
+    - 1-common-tasks/functions/apply-tuple-to-function
+    - 1-common-tasks/functions/optional-arguments
+    - 1-common-tasks/functions/pass-arrays
+    - 1-common-tasks/functions/return-multiple-values
+  - title: Input streams
+    samples:
+    - 1-common-tasks/input-streams/read-line-by-line
+    - 1-common-tasks/input-streams/read-line-of-values
+    - 1-common-tasks/input-streams/validate-multiple-reads
+  - title: Memory management
+    samples:
+    - 1-common-tasks/memory-management/shared-ownership
+    - 1-common-tasks/memory-management/unique-ownership
+    - 1-common-tasks/memory-management/use-raii-types
+    - 1-common-tasks/memory-management/weak-reference
+  - title: Output streams
+    samples:
+    - 1-common-tasks/output-streams/overload-insertion-operation
+    - 1-common-tasks/output-streams/write-data-in-columns
+  - title: Random number generation
+    samples:
+    - 1-common-tasks/random/choose-random-element
+    - 1-common-tasks/random/flip-a-biased-coin
+    - 1-common-tasks/random/roll-a-die
+    - 1-common-tasks/random/unpredictable-random-numbers
+  - title: Ranges
+    samples:
+    - 1-common-tasks/ranges/range-based-algorithms
+    - 1-common-tasks/ranges/range-iteration
+  - title: Templates
+    samples:
+    - 1-common-tasks/templates/class-template-sfinae
+    - 1-common-tasks/templates/function-template-sfinae
+    - 1-common-tasks/templates/perfect-forwarding
+  - title: Time
+    samples:
+    - 1-common-tasks/time/fixed-time-step
+    - 1-common-tasks/time/measure-execution-time
+    - 1-common-tasks/time/sleep
+- title: Patterns
+  sections:
+  - title: Behavioral
+    samples:
+    - 2-patterns/behavioral/observer
+    - 2-patterns/behavioral/visitor
+  - title: Creational
+    samples:
+    - 2-patterns/creational/builder
+    - 2-patterns/structural/decorator

@@ -7,16 +7,16 @@
 
 class foo
 {
-	public:
-		foo();
-		~foo();
+  public:
+    foo();
+    ~foo();
 
-		foo(foo&&);
-		foo& operator=(foo&&);
+    foo(foo&&);
+    foo& operator=(foo&&);
 
-	private:
-		class impl;
-		std::unique_ptr<impl> pimpl;
+  private:
+    class impl;
+    std::unique_ptr<impl> pimpl;
 };
 
 
@@ -24,20 +24,20 @@ class foo
 
 class foo::impl
 {
-	public:
-		void do_internal_work()
-		{
-			internal_data = 5;
-		}
+  public:
+    void do_internal_work()
+    {
+      internal_data = 5;
+    }
 
-	private:
-		int internal_data = 0;
+  private:
+    int internal_data = 0;
 };
 
 foo::foo()
-	: pimpl{std::make_unique<impl>()}
+  : pimpl{std::make_unique<impl>()}
 {
-	pimpl->do_internal_work();
+  pimpl->do_internal_work();
 }
 
 foo::~foo() = default;
@@ -80,5 +80,5 @@ foo& foo::operator=(foo&&) = default;
 
 int main()
 {
-	foo f;
+  foo f;
 }

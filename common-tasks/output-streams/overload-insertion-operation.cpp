@@ -4,18 +4,18 @@
 
 class foo
 {
-	public:
-		friend std::ostream& operator<<(std::ostream& stream,
-		                                foo const& f);
+  public:
+    friend std::ostream& operator<<(std::ostream& stream,
+                                    foo const& f);
 
-	private:
-		int x = 10;
+  private:
+    int x = 10;
 };
 
 std::ostream& operator<<(std::ostream& stream,
                          foo const& f)
 {
-	return stream << "A foo with x = " << f.x;
+  return stream << "A foo with x = " << f.x;
 }
 
 // Write your class type objects to an output stream.
@@ -32,6 +32,6 @@ std::ostream& operator<<(std::ostream& stream,
 
 int main()
 {
-	foo f;
-	std::cout << f << std::endl;
+  foo f;
+  std::cout << f << std::endl;
 }

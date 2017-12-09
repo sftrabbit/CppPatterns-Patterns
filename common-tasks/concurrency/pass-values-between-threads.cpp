@@ -6,19 +6,19 @@
 
 void func(std::promise<int> result_promise) noexcept
 {
-	result_promise.set_value(42);
+  result_promise.set_value(42);
 }
 
 int main()
 {
-	std::promise<int> result_promise;
-	std::future<int> result_future = result_promise.get_future();
+  std::promise<int> result_promise;
+  std::future<int> result_future = result_promise.get_future();
 
-	std::thread t{func, std::move(result_promise)};
+  std::thread t{func, std::move(result_promise)};
 
-	int result = result_future.get();
+  int result = result_future.get();
 
-	t.join();
+  t.join();
 }
 
 // Use promises to communicate values between threads.

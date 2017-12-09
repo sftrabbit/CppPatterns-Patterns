@@ -5,48 +5,48 @@ class element_concrete_2;
 
 class visitor
 {
-	public:
-		virtual void visit(element_concrete_1& el) = 0;
-		virtual void visit(element_concrete_2& el) = 0;
+  public:
+    virtual void visit(element_concrete_1& el) = 0;
+    virtual void visit(element_concrete_2& el) = 0;
 };
 
 class visitor_concrete : public visitor
 {
-	public:
-		virtual void visit(element_concrete_1& el) override
-		{
-			// Do something with el
-		};
+  public:
+    virtual void visit(element_concrete_1& el) override
+    {
+      // Do something with el
+    };
 
-		virtual void visit(element_concrete_2& el) override
-		{
-			// Do something with el
-		};
+    virtual void visit(element_concrete_2& el) override
+    {
+      // Do something with el
+    };
 };
 
 
 class element
 {
-	public:
-		virtual void accept(visitor& v) = 0;
+  public:
+    virtual void accept(visitor& v) = 0;
 };
 
 class element_concrete_1 : public element
 {
-	public:
-		virtual void accept(visitor& v) override
-		{
-			v.visit(*this);
-		}
+  public:
+    virtual void accept(visitor& v) override
+    {
+      v.visit(*this);
+    }
 };
 
 class element_concrete_2 : public element
 {
-	public:
-		virtual void accept(visitor& v) override
-		{
-			v.visit(*this);
-		}
+  public:
+    virtual void accept(visitor& v) override
+    {
+      v.visit(*this);
+    }
 };
 
 // Separate generic algorithms from the elements or structure on which
@@ -79,13 +79,13 @@ class element_concrete_2 : public element
 
 int main()
 {
-	element_concrete_1 x;
-	element_concrete_2 y;
+  element_concrete_1 x;
+  element_concrete_2 y;
 
-	element& el1 = x;
-	element& el2 = y;
+  element& el1 = x;
+  element& el2 = y;
 
-	visitor_concrete v;
-	el1.accept(v);
-	el2.accept(v);
+  visitor_concrete v;
+  el1.accept(v);
+  el2.accept(v);
 };

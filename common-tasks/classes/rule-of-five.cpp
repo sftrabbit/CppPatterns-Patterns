@@ -4,55 +4,55 @@
 #include <utility>
 
 class resource {
-	int x = 0;
+  int x = 0;
 };
 
 class foo
 {
-	public:
-		foo()
-			: p{new resource{}}
-		{ }
+  public:
+    foo()
+      : p{new resource{}}
+    { }
 
-		foo(const foo& other)
-			: p{new resource{*(other.p)}}
-		{ }
+    foo(const foo& other)
+      : p{new resource{*(other.p)}}
+    { }
 
-		foo(foo&& other)
-			: p{other.p}
-		{
-			other.p = nullptr;
-		}
+    foo(foo&& other)
+      : p{other.p}
+    {
+      other.p = nullptr;
+    }
 
-		foo& operator=(const foo& other)
-		{
-			if (&other != this) {
-				delete p;
-				p = nullptr;
-				p = new resource{*(other.p)};
-			}
+    foo& operator=(const foo& other)
+    {
+      if (&other != this) {
+        delete p;
+        p = nullptr;
+        p = new resource{*(other.p)};
+      }
 
-			return *this;
-		}
+      return *this;
+    }
 
-		foo& operator=(foo&& other)
-		{
-			if (&other != this) {
-				delete p;
-				p = other.p;
-				other.p = nullptr;
-			}
+    foo& operator=(foo&& other)
+    {
+      if (&other != this) {
+        delete p;
+        p = other.p;
+        other.p = nullptr;
+      }
 
-			return *this;
-		}
+      return *this;
+    }
 
-		~foo()
-		{
-			delete p;
-		}
+    ~foo()
+    {
+      delete p;
+    }
 
-	private:
-		resource* p;
+  private:
+    resource* p;
 };
 
 // Safely and efficiently implement RAII to encapsulate the
@@ -106,5 +106,5 @@ class foo
 
 int main()
 {
-	foo f;
+  foo f;
 }

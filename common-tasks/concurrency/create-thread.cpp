@@ -10,14 +10,14 @@ void do_something();
 
 int main()
 {
-	std::string str = "Test";
-	int x = 5;
+  std::string str = "Test";
+  int x = 5;
 
-	std::thread t{func, str, std::ref(x)};
+  std::thread t{func, str, std::ref(x)};
 
-	do_something();
+  do_something();
 
-	t.join();
+  t.join();
 }
 
 // Execute code on a separate thread.

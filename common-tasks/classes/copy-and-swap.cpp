@@ -4,47 +4,47 @@
 #include <utility>
 
 class resource {
-	int x = 0;
+  int x = 0;
 };
 
 class foo
 {
-	public:
-		foo()
-			: p{new resource{}}
-		{ }
+  public:
+    foo()
+      : p{new resource{}}
+    { }
 
-		foo(const foo& other)
-			: p{new resource{*(other.p)}}
-		{ }
+    foo(const foo& other)
+      : p{new resource{*(other.p)}}
+    { }
 
-		foo(foo&& other)
-			: p{other.p}
-		{
-			other.p = nullptr;
-		}
+    foo(foo&& other)
+      : p{other.p}
+    {
+      other.p = nullptr;
+    }
 
-		foo& operator=(foo other)
-		{
-			swap(*this, other);
+    foo& operator=(foo other)
+    {
+      swap(*this, other);
 
-			return *this;
-		}
+      return *this;
+    }
 
-		~foo()
-		{
-			delete p;
-		}
+    ~foo()
+    {
+      delete p;
+    }
 
-		friend void swap(foo& first, foo& second)
-		{
-			using std::swap;
+    friend void swap(foo& first, foo& second)
+    {
+      using std::swap;
 
-			swap(first.p, second.p);
-		}
+      swap(first.p, second.p);
+    }
 
-	private:
-		resource* p;
+  private:
+    resource* p;
 };
 
 // Implement the assignment operator with strong exception safety.
@@ -87,9 +87,9 @@ class foo
 
 int main()
 {
-	foo f1, f2, f3;
-	f2 = f1;
-	f3 = std::move(f1);
+  foo f1, f2, f3;
+  f2 = f1;
+  f3 = std::move(f1);
 
-	swap(f2, f3);
+  swap(f2, f3);
 }

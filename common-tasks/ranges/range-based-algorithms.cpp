@@ -7,15 +7,15 @@
 template <typename ForwardRange>
 void algorithm(ForwardRange& range)
 {
-	using std::begin;
-	using std::end;
+  using std::begin;
+  using std::end;
 
-	using iterator = decltype(begin(range));
+  using iterator = decltype(begin(range));
 
-	iterator it_begin = begin(range);
-	iterator it_end = end(range);
+  iterator it_begin = begin(range);
+  iterator it_end = end(range);
 
-	// Now use it_begin and it_end to implement algorithm
+  // Now use it_begin and it_end to implement algorithm
 }
 
 // Implement algorithms that can be applied to any generic range of
@@ -62,6 +62,6 @@ void algorithm(ForwardRange& range)
 
 int main()
 {
-	std::forward_list<int> arr = {6, 12, 5, 2, 3};
-	algorithm(arr);
+  std::forward_list<int> arr = {6, 12, 5, 2, 3};
+  algorithm(arr);
 }

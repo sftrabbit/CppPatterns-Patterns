@@ -6,23 +6,23 @@
 class Base
 {
 public:
-	virtual ~Base() {}
+  virtual ~Base() {}
 
-	virtual Base* clone() const = 0;
+  virtual Base* clone() const = 0;
 };
 
 class Derived : public Base
 {
 public:
-	Derived* clone() const override
-	{
-		return new Derived(*this);
-	}
+  Derived* clone() const override
+  {
+    return new Derived(*this);
+  }
 };
 
 void foo(std::unique_ptr<Base> original)
 {
-	std::unique_ptr<Base> copy{original->clone()};
+  std::unique_ptr<Base> copy{original->clone()};
 }
 
 // Create a copy of an object through a pointer to its base type.
@@ -60,6 +60,6 @@ void foo(std::unique_ptr<Base> original)
 
 int main()
 {
-	std::unique_ptr<Base> p = std::make_unique<Derived>();
-	foo(std::move(p));
+  std::unique_ptr<Base> p = std::make_unique<Derived>();
+  foo(std::move(p));
 }

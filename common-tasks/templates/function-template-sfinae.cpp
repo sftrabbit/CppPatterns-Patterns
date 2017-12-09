@@ -7,16 +7,16 @@
 
 template <typename T>
 typename std::enable_if<std::is_integral<T>::value, bool>::type
-	equal(T lhs, T rhs)
+  equal(T lhs, T rhs)
 {
-	return lhs == rhs;
+  return lhs == rhs;
 }
 
 template <typename T>
 typename std::enable_if<std::is_floating_point<T>::value, bool>::type
-	equal(T lhs, T rhs)
+  equal(T lhs, T rhs)
 {
-	return std::abs(lhs - rhs) < 0.0001;
+  return std::abs(lhs - rhs) < 0.0001;
 }
 
 // Conditionally instantiate a function template depending on the
@@ -49,6 +49,6 @@ typename std::enable_if<std::is_floating_point<T>::value, bool>::type
 
 int main()
 {
-	equal(3, 3);
-	equal(0.9f / 9.0f, 0.1f);
+  equal(3, 3);
+  equal(0.9f / 9.0f, 0.1f);
 }

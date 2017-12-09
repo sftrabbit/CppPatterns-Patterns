@@ -5,20 +5,20 @@
 
 int func()
 {
-	int some_value = 0;
+  int some_value = 0;
 
-	// Do work...
+  // Do work...
 
-	return some_value;
+  return some_value;
 }
 
 int main()
 {
-	std::future<int> result_future = std::async(func);
+  std::future<int> result_future = std::async(func);
 
-	// Do something...
+  // Do something...
 
-	int result = result_future.get();
+  int result = result_future.get();
 }
 
 // High-level asynchronous execution of tasks.

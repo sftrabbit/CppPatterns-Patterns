@@ -42,6 +42,6 @@ class foo<T, typename std::enable_if<std::is_floating_point<T>::value>::type>
 
 int main()
 {
-	foo<int> f1;
-	foo<float> f2;
+  foo<int> f1;
+  foo<float> f2;
 }

@@ -5,14 +5,14 @@
 
 int main()
 {
-	std::istringstream stream{"This stream\n"
-	                          "contains many\n"
-	                          "lines.\n"};
-	std::string line;
+  std::istringstream stream{"This stream\n"
+                            "contains many\n"
+                            "lines.\n"};
+  std::string line;
 
-	while (std::getline(stream, line)) {
-		// Process line
-	}
+  while (std::getline(stream, line)) {
+    // Process line
+  }
 }
 
 // Process the contents of an input stream line-by-line.

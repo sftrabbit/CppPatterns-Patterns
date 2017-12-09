@@ -5,19 +5,19 @@
 
 int main()
 {
-	std::istringstream stream{"Chief Executive Officer\n"
-	                          "John Smith\n"
-	                          "32"};
+  std::istringstream stream{"Chief Executive Officer\n"
+                            "John Smith\n"
+                            "32"};
 
-	std::string position;
-	std::string first_name;
-	std::string family_name;
-	int age;
+  std::string position;
+  std::string first_name;
+  std::string family_name;
+  int age;
 
-	if (std::getline(stream, position) &&
-	    stream >> first_name >> family_name >> age) {
-		// Use values
-	}
+  if (std::getline(stream, position) &&
+      stream >> first_name >> family_name >> age) {
+    // Use values
+  }
 }
 
 // Ensure that multiple stream reads are successful before using the

@@ -2,28 +2,28 @@
 
 namespace ns
 {
-	class foo
-	{
-		public:
-			void member()
-			{
-				// Uses private data
-			}
+  class foo
+  {
+    public:
+      void member()
+      {
+        // Uses private data
+      }
 
-		private:
-			// Private data
-	};
+    private:
+      // Private data
+  };
 
-	void non_member(foo obj)
-	{
-		obj.member();
-	}
+  void non_member(foo obj)
+  {
+    obj.member();
+  }
 }
 
 int main()
 {
-	ns::foo obj;
-	non_member(obj);
+  ns::foo obj;
+  non_member(obj);
 }
 
 // Reduce dependencies on internal class details and improve

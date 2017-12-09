@@ -3,28 +3,28 @@
 template<typename derived>
 class base
 {
-	public:
-		void do_something()
-		{
-			// ...
-			static_cast<derived*>(this)->do_something_impl();
-			// ...
-		}
+  public:
+    void do_something()
+    {
+      // ...
+      static_cast<derived*>(this)->do_something_impl();
+      // ...
+    }
 
-	private:
-		void do_something_impl()
-		{
-			// Default implementation
-		}
+  private:
+    void do_something_impl()
+    {
+      // Default implementation
+    }
 };
 
 class foo : public base<foo>
 {
-	public:
-		void do_something_impl()
-		{
-			// Derived implementation
-		}
+  public:
+    void do_something_impl()
+    {
+      // Derived implementation
+    }
 };
 
 class bar : public base<bar>
@@ -33,7 +33,7 @@ class bar : public base<bar>
 template<typename derived>
 void use(base<derived>& b)
 {
-	b.do_something();
+  b.do_something();
 }
 
 // Delegate behavior to derived classes without incurring the cost of
@@ -74,9 +74,9 @@ void use(base<derived>& b)
 
 int main()
 {
-	foo f;
-	use(f);
+  foo f;
+  use(f);
 
-	bar b;
-	use(b);
+  bar b;
+  use(b);
 }

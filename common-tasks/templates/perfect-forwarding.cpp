@@ -6,8 +6,8 @@
 template<typename T, typename U>
 std::pair<T, U> make_pair_wrapper(T&& t, U&& u)
 {
-	return std::make_pair(std::forward<T>(t),
-	                      std::forward<U>(u));
+  return std::make_pair(std::forward<T>(t),
+                        std::forward<U>(u));
 }
 
 // Forward arguments of one function to another as though the wrapped
@@ -35,5 +35,5 @@ std::pair<T, U> make_pair_wrapper(T&& t, U&& u)
 
 int main()
 {
-	std::pair<int, int> p1{ make_pair_wrapper(1, 2) };
+  std::pair<int, int> p1{ make_pair_wrapper(1, 2) };
 }

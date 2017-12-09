@@ -11,8 +11,8 @@ void func(std::unique_ptr<foo> obj)
 
 int main()
 {
-	std::unique_ptr<foo> obj = std::make_unique<foo>();
-	func(std::move(obj));
+  std::unique_ptr<foo> obj = std::make_unique<foo>();
+  func(std::move(obj));
 }
 
 // Transfer unique ownership of a dynamically allocated object to

@@ -6,34 +6,34 @@
 
 class observer
 {
-	public:
-		virtual void notify() = 0;
+  public:
+    virtual void notify() = 0;
 };
 
 class observer_concrete : public observer
 {
-	public:
-		virtual void notify() override
-		{ }
+  public:
+    virtual void notify() override
+    { }
 };
 
 class subject
 {
-	public:
-		void register_observer(observer& o)
-		{
-			observers.push_back(o);
-		}
+  public:
+    void register_observer(observer& o)
+    {
+      observers.push_back(o);
+    }
 
-		void notify_observers()
-		{
-			for (observer& o : observers) {
-				o.notify();
-			}
-		}
+    void notify_observers()
+    {
+      for (observer& o : observers) {
+        o.notify();
+      }
+    }
 
-	private:
-		std::vector<std::reference_wrapper<observer>> observers;
+  private:
+    std::vector<std::reference_wrapper<observer>> observers;
 };
 
 // Notify generic observer objects when an event occurs.
@@ -57,11 +57,11 @@ class subject
 
 int main()
 {
-	subject s;
+  subject s;
 
-	observer_concrete o1, o2;
-	s.register_observer(o1);
-	s.register_observer(o2);
+  observer_concrete o1, o2;
+  s.register_observer(o1);
+  s.register_observer(o2);
 
-	s.notify_observers();
+  s.notify_observers();
 }

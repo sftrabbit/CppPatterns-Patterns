@@ -21,7 +21,7 @@ int main()
 
 // Allow argument values to be omitted when calling a function.
 //
-// **Note**: This sample uses experimental entities from the Library
+// **Note**: This pattern uses experimental entities from the Library
 // Fundamentals TS that demonstrate likely upcoming features in C++
 // but should not be used in production code.
 //

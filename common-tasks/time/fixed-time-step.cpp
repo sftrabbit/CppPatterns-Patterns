@@ -20,7 +20,7 @@ int main()
 
 // Block the execution of a thread until a fixed point in time.
 //
-// For the purposes of this sample, we use
+// For the purposes of demonstrating this pattern, we use
 // [`std::chrono::steady_clock`](cpp/chrono/steady_clock) ([13]),
 // although any other clock will suffice.
 //

@@ -93,7 +93,7 @@ class foo
 // Notice that the assignment operators ([27-47]) check for
 // self-assignment to ensure safe management of the resource.
 //
-// **Note**: The copy and move assignment operators in this sample
+// **Note**: The copy and move assignment operators in the example code
 // provide only basic exception safety. They may alternatively be
 // implemented with [the copy-and-swap
 // idiom](/common-tasks/copy-and-swap.html), which provides strong

@@ -15,7 +15,7 @@ int main()
 // Swap the values of two objects.
 //
 // On [8-9], we create two `std::string` objects whose values we wish
-// to swap. However, this sample will also apply to any other [swappable
+// to swap. However, this pattern will also apply to any other [swappable
 // type](http://en.cppreference.com/w/cpp/concept/Swappable).
 //
 // On [11], we use a [using-declaration](cpp/language/using_declaration)

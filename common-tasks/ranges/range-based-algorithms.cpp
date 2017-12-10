@@ -40,7 +40,7 @@ void algorithm(ForwardRange& range)
 // - *Random Access Range* - provides
 //   [Random Access Iterators](cpp/concept/RandomAccessIterator)
 //
-// For this sample, we assume that the algorithm requires only Forward
+// For the example code, we assume that the algorithm requires only Forward
 // Iterators, so can be applied to any Forward Range. We therefore
 // name the template parameter `ForwardRange` on [7] to illustrate
 // this.

@@ -48,7 +48,7 @@ private:
 // `std::weak_ptr` can be converted to a `std::shared_ptr` to provide
 // temporary ownership and safe access to the object.
 //
-// In this sample, we have two classes: `foo` on [8-17], and `bar` on
+// In the example code, we have two classes: `foo` on [8-17], and `bar` on
 // [19-33]. A `foo` object has shared ownership of a `bar` ([16]), and
 // `bar` requires some form of reference back to the `foo` that owns it.
 // If this back reference were a `std::shared_ptr<foo>`, it would introduce

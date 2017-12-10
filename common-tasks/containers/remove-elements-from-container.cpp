@@ -37,7 +37,7 @@ int main()
 // which actually removes the elements from the container. Similarly,
 // on [14-16], we demonstrate how `std::remove_if` can be used with
 // `erase` to remove all elements for which a given predicate returns
-// `true` (in the sample, we remove all even elements).
+// `true` (in the example code, we remove all even elements).
 //
 // This technique of using the generic remove algorithms followed by
 // a call to the particular container's `erase` member function is

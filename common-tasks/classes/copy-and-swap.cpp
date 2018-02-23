@@ -54,7 +54,7 @@ class foo
 // copy/move constructor and achieve strong exception safety.
 //
 // The class `foo`, on [10-48], has an implementation similar to the
-// [rule of five](/common-tasks/rule-of-five.html), yet its copy and
+// [rule of five](/patterns/rule-of-five.html), yet its copy and
 // move assignment operators have been replaced with a single
 // assignment operator on [27-32]. This assignment operator takes its
 // argument by value, making use of the existing copy and move
@@ -83,7 +83,7 @@ class foo
 // **Note**: We can typically avoid manual memory management and
 // having to write the copy/move constructors, assignment operators,
 // and destructor entirely by using the
-// [rule of zero](/common-tasks/rule-of-zero.html)
+// [rule of zero](/patterns/rule-of-zero.html)
 
 int main()
 {

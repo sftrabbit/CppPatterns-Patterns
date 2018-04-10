@@ -1,0 +1,76 @@
+categories:
+- title: Algorithms
+  samples:
+  - common-tasks/algorithms/copy-range-of-elements
+  - common-tasks/algorithms/count-values-in-range
+  - common-tasks/algorithms/sort-range-of-elements
+  - common-tasks/algorithms/swap-containers
+  - common-tasks/algorithms/swap-values
+- title: Classes
+  samples:
+  - common-tasks/classes/copy-and-swap
+  - common-tasks/classes/delegate-behavior-to-derived-classes
+  - common-tasks/classes/lexicographic-ordering
+  - common-tasks/classes/non-member-interfaces
+  - common-tasks/classes/pimpl
+  - common-tasks/classes/rule-of-five
+  - common-tasks/classes/rule-of-zero
+  - common-tasks/classes/virtual-constructor
+- title: Concurrency
+  samples:
+  - common-tasks/concurrency/create-thread
+  - common-tasks/concurrency/execute-task-asynchronously
+  - common-tasks/concurrency/pass-values-between-threads
+- title: Containers
+  samples:
+  - common-tasks/containers/check-existence-of-key
+  - common-tasks/containers/remove-elements-from-container
+- title: Functions
+  samples:
+  - common-tasks/functions/apply-tuple-to-function
+  - common-tasks/functions/optional-arguments
+  - common-tasks/functions/pass-arrays
+  - common-tasks/functions/return-multiple-values
+- title: Input streams
+  samples:
+  - common-tasks/input-streams/read-line-by-line
+  - common-tasks/input-streams/read-line-of-values
+  - common-tasks/input-streams/validate-multiple-reads
+- title: Memory management
+  samples:
+  - common-tasks/memory-management/shared-ownership
+  - common-tasks/memory-management/unique-ownership
+  - common-tasks/memory-management/use-raii-types
+  - common-tasks/memory-management/weak-reference
+- title: Output streams
+  samples:
+  - common-tasks/output-streams/overload-insertion-operation
+  - common-tasks/output-streams/write-data-in-columns
+- title: Random number generation
+  samples:
+  - common-tasks/random/choose-random-element
+  - common-tasks/random/flip-a-biased-coin
+  - common-tasks/random/roll-a-die
+  - common-tasks/random/unpredictable-random-numbers
+- title: Ranges
+  samples:
+  - common-tasks/ranges/range-based-algorithms
+  - common-tasks/ranges/range-iteration
+- title: Templates
+  samples:
+  - common-tasks/templates/class-template-sfinae
+  - common-tasks/templates/function-template-sfinae
+  - common-tasks/templates/perfect-forwarding
+- title: Time
+  samples:
+  - common-tasks/time/fixed-time-step
+  - common-tasks/time/measure-execution-time
+  - common-tasks/time/sleep
+- title: Behavioral
+  samples:
+  - patterns/behavioral/observer
+  - patterns/behavioral/visitor
+- title: Creational
+  samples:
+  - patterns/creational/builder
+  - patterns/structural/decorator

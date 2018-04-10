@@ -11,7 +11,7 @@
 - David Weiß <david+code@movatica.com> (movatica)
 - Max Galkin <maksim.galkin@gmail.com> (yacoder)
 - orbitcowboy (orbitcowboy)
-- Paul Walmsley (pjwhams) 
+- Paul Walmsley (pjwhams)
 - Michael B. Price <michael.b.price.dev@gmail.com> (michaelbprice)
 - Alejandro Mallea <janoma@gmail.com> (janoma)
 - Mehdi Amini (joker-eph)

@@ -6,10 +6,10 @@
 
 std::string read_text_stream(std::istream& in)
 {
-	std::ostringstream ss{};
-	ss << in.rdbuf();
-	
-	return ss.str();
+  std::ostringstream ss{};
+  ss << in.rdbuf();
+  
+  return ss.str();
 }
 
 // Read entire content of a text stream into a string.
@@ -35,7 +35,7 @@ std::string read_text_stream(std::istream& in)
 
 int main()
 {
-	std::ifstream in{"file.txt"};
-	
-	std::string str = read_text_stream(in);
+  std::ifstream in{"file.txt"};
+  
+  std::string str = read_text_stream(in);
 }

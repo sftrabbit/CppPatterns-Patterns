@@ -9,33 +9,33 @@
 
 std::vector<unsigned char> read_binary_stream1(std::istream& in)
 {
-	std::istream::pos_type start = in.tellg();
-	in.ignore(std::numeric_limits<std::streamsize>::max());
-	
-	std::vector<unsigned char> buffer{};
-	buffer.resize(in.gcount());
-	
-	in.seekg(start);
-	in.read(reinterpret_cast<char*>(buffer.data()), buffer.size());
-	
-	return buffer;
+  std::istream::pos_type start = in.tellg();
+  in.ignore(std::numeric_limits<std::streamsize>::max());
+  
+  std::vector<unsigned char> buffer{};
+  buffer.resize(in.gcount());
+  
+  in.seekg(start);
+  in.read(reinterpret_cast<char*>(buffer.data()), buffer.size());
+  
+  return buffer;
 }
 
 std::deque<unsigned char> read_binary_stream2(std::istream& in)
 {
-	using std::begin;
-	using std::end;
-	
-	std::deque<unsigned char> buffer{};
-	
-	std::array<unsigned char, BUFSIZ> chunk{};
-	while (in.read(reinterpret_cast<char*>(chunk.data()), chunk.size()) ||
-		     in.gcount())
-	{
-		buffer.insert(end(buffer), begin(chunk), begin(chunk) + in.gcount());
-	}
-	
-	return buffer;
+  using std::begin;
+  using std::end;
+  
+  std::deque<unsigned char> buffer{};
+  
+  std::array<unsigned char, BUFSIZ> chunk{};
+  while (in.read(reinterpret_cast<char*>(chunk.data()), chunk.size()) ||
+         in.gcount())
+  {
+    buffer.insert(end(buffer), begin(chunk), begin(chunk) + in.gcount());
+  }
+  
+  return buffer;
 }
 
 // Read the entire contents of a binary stream into a buffer.
@@ -136,9 +136,9 @@ std::deque<unsigned char> read_binary_stream2(std::istream& in)
 
 int main()
 {
-	std::ifstream file1{"file.dat", std::ios_base::in | std::ios_base::binary};
-	std::vector<unsigned char> data1 = read_binary_stream1(file1);
-	
-	std::ifstream file2{"file.dat", std::ios_base::in | std::ios_base::binary};
-	std::deque<unsigned char> data2 = read_binary_stream2(file2);
+  std::ifstream file1{"file.dat", std::ios_base::in | std::ios_base::binary};
+  std::vector<unsigned char> data1 = read_binary_stream1(file1);
+  
+  std::ifstream file2{"file.dat", std::ios_base::in | std::ios_base::binary};
+  std::deque<unsigned char> data2 = read_binary_stream2(file2);
 }

@@ -13,6 +13,7 @@ categories:
   - common-tasks/classes/lexicographic-ordering
   - common-tasks/classes/non-member-interfaces
   - common-tasks/classes/pimpl
+  - common-tasks/classes/restrict-access-to-member-functions
   - common-tasks/classes/rule-of-five
   - common-tasks/classes/rule-of-zero
   - common-tasks/classes/virtual-constructor

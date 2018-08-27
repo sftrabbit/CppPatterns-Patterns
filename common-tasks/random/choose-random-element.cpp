@@ -20,7 +20,7 @@ int main()
 // On [9], we create a [`std::vector`](cpp/container/vector) from
 // which we want to select a random element.
 //
-// We then effectively [roll a die](/common-tasks/roll-a-die.html)
+// We then effectively [roll a die](/patterns/roll-a-die.html)
 // where the numbers on the die are the indices of elements in the
 // container. That is, we seed the
 // [`std::mt19937`](cpp/numeric/random/mersenne_twister_engine) on

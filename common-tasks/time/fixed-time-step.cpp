@@ -44,6 +44,6 @@ int main()
 // This technique is most commonly used in a loop to ensure that the
 // loop iterates with a fixed time step. Alternatively, if you want to
 // sleep for a fixed amount of time, see the [sleep
-// sample](/common-tasks/sleep.html).
+// sample](/patterns/sleep.html).
 
 void some_complex_work() { }

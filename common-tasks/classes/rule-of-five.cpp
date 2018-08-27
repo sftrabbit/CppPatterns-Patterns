@@ -96,13 +96,13 @@ class foo
 // **Note**: The copy and move assignment operators in the example code
 // provide only basic exception safety. They may alternatively be
 // implemented with [the copy-and-swap
-// idiom](/common-tasks/copy-and-swap.html), which provides strong
+// idiom](/patterns/copy-and-swap.html), which provides strong
 // exception safety at an optimisation cost.
 //
 // **Note**: We can typically avoid manual memory management and
 // having to write the copy constructor, assignment operator, and
 // destructor entirely by using the
-// [rule of zero](/common-tasks/rule-of-zero.html)
+// [rule of zero](/patterns/rule-of-zero.html)
 
 int main()
 {

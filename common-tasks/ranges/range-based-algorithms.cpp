@@ -56,7 +56,7 @@ void algorithm(ForwardRange& range)
 //
 // If the iterators are not necessary to implement the algorithm, we
 // may instead be able to use a simple
-// [range-based `for` loop](/common-tasks/range-iteration.html).
+// [range-based `for` loop](/patterns/range-iteration.html).
 
 #include <forward_list>
 

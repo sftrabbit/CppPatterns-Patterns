@@ -40,5 +40,5 @@ int main()
 // successful.
 //
 // If you are reading values on multiple lines, consider [reading
-// from the stream line-by-line](/common-tasks/read-line-by-line.html)
+// from the stream line-by-line](/patterns/read-line-by-line.html)
 // and then parsing each line.

@@ -28,4 +28,4 @@ int main()
 // destroyed.
 //
 // In other cases, you may instead wish to [transfer unique ownership
-// of an object](/common-tasks/unique-ownership.html).
+// of an object](/patterns/unique-ownership.html).

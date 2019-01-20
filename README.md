@@ -11,7 +11,7 @@ development.
 
 This repository contains the source for the patterns themselves, which
 is used when building the C++ Patterns web front-end. For the front-end
-source, see [sftrabbit/CppPatterns-Web](https://github.com/sftrabbit/CppPatterns-Web).
+source, see [sftrabbit/CppPatterns](https://github.com/sftrabbit/CppPatterns).
 
 ## Contributing
 

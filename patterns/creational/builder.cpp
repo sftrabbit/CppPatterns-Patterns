@@ -11,6 +11,7 @@ class foo
       : prop1{prop1}, prop2{prop2}, prop3{prop3}, prop4{prop4}
     { }
 
+  private:
     int prop1;
     bool prop2;
     bool prop3;
@@ -47,9 +48,9 @@ int main()
 // Separate the complex construction of an object from its
 // representation.
 //
-// The `foo` class, on [5-18], has a complex construction process
+// The `foo` class, on [5-19], has a complex construction process
 // during which any subset of its properties might be set. This
-// process is captured by the `foo::builder` class, on [20-38].
+// process is captured by the `foo::builder` class, on [21-39].
 // This builder class provides an interface for
 // constructing `foo` objects, allowing various combinations of
 // parameters to be provided. This avoids having to define a large
@@ -57,9 +58,9 @@ int main()
 //
 // The `foo::builder` class implements a set of
 // chainable functions for setting the construction parameters
-// ([23-26]) and a `build` member function for constructing the `foo`
-// object with these parameters ([28-31]).
+// ([24-27]) and a `build` member function for constructing the `foo`
+// object with these parameters ([29-32]).
 //
-// On [42-44], we use `foo::builder` to construct a `foo` object,
+// On [43-45], we use `foo::builder` to construct a `foo` object,
 // setting its `prop1` and `prop3` members and calling `build` to
 // construct the object.

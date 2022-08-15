@@ -11,6 +11,7 @@ class foo
       : prop1{prop1}, prop2{prop2}, prop3{prop3}, prop4{prop4}
     { }
 
+  private:
     int prop1;
     bool prop2;
     bool prop3;
